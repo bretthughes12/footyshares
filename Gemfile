@@ -1,11 +1,16 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+group :production do
+  gem 'pg'
+  gem 'newrelic_rpm'
+end
 
 gem 'json'
 
@@ -37,3 +42,26 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug'
+
+gem 'will_paginate'
+gem 'formtastic'
+gem 'cancan'
+gem 'inherited_resources'
+gem 'exception_notification', :require => 'exception_notifier'
+
+group :development, :test do
+  gem 'mysql2'
+  gem 'test-unit'
+  gem 'foreman'
+  gem 'factory_girl_rails'
+  gem 'therubyracer'
+end
+
+group :development do
+  gem 'annotate'
+  gem 'letter_opener'
+end
+
+group :test do
+  gem 'cover_me', '~> 1.2.0'  
+end
