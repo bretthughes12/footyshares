@@ -4,11 +4,15 @@ class User < ActiveRecord::Base
 
   has_many :shares
   
-  validates :login,           :presence => true, 
-                              :uniqueness => true,
-                              :length => { :maximum => 255 }
-  validates :password,        :confirmation => true
-  validates :hashed_password, :presence => { :message => "Missing password" }
+  validates :login,           presence: true, 
+                              uniqueness: true,
+                              length: { maximum: 255 }
+  validates :email,           presence: true,
+                              length: { maximum: 100 },
+                              format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, 
+                                        message: "invalid format" }
+  validates :password,        confirmation: true
+  validates :hashed_password, presence: { message: "Missing password" }
 
   attr_accessor   :password
   attr_protected  :admin, :id, :salt
