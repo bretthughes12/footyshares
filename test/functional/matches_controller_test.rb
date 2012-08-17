@@ -3,6 +3,7 @@ require 'test_helper'
 class MatchesControllerTest < ActionController::TestCase
   setup do
     @match = FactoryGirl.create(:match)
+    @admin_user = FactoryGirl.create(:user, :admin)
   end
 
   test "should get index" do
@@ -12,13 +13,17 @@ class MatchesControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, {}, {user_id: @admin_user.id}
     assert_response :success
   end
 
   test "should create match" do
     assert_difference('Match.count') do
-      post :create, match: { allow_only_one_team: @match.allow_only_one_team, name: @match.name, round_id: @match.round_id, venue: @match.venue }
+      post :create, {match: { allow_only_one_team: @match.allow_only_one_team, 
+                              name: @match.name, 
+                              round_id: @match.round_id, 
+                              venue: @match.venue }},
+                    {user_id: @admin_user.id}
     end
 
     assert_redirected_to match_path(assigns(:match))
@@ -30,18 +35,25 @@ class MatchesControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, id: @match
+    get :edit, {id: @match},
+               {user_id: @admin_user.id}
     assert_response :success
   end
 
   test "should update match" do
-    put :update, id: @match, match: { allow_only_one_team: @match.allow_only_one_team, name: @match.name, round_id: @match.round_id, venue: @match.venue }
+    put :update, {id: @match, 
+                  match: { allow_only_one_team: @match.allow_only_one_team, 
+                           name: @match.name, 
+                           round_id: @match.round_id, 
+                           venue: @match.venue }},
+                 {user_id: @admin_user.id}
     assert_redirected_to match_path(assigns(:match))
   end
 
   test "should destroy match" do
     assert_difference('Match.count', -1) do
-      delete :destroy, id: @match
+      delete :destroy, {id: @match},
+                       {user_id: @admin_user.id}
     end
 
     assert_redirected_to matches_path

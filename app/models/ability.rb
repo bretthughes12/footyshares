@@ -5,6 +5,7 @@ class Ability
     case
       when user.nil?
         can :read, :all
+        can :create, User
 
       when user.admin?
         can :manage, :all

@@ -3,6 +3,7 @@ require 'test_helper'
 class RoundsControllerTest < ActionController::TestCase
   setup do
     @round = FactoryGirl.create(:round)
+    @admin_user = FactoryGirl.create(:user, :admin)
   end
 
   test "should get index" do
@@ -12,13 +13,16 @@ class RoundsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, {}, {user_id: @admin_user.id}
     assert_response :success
   end
 
   test "should create round" do
     assert_difference('Round.count') do
-      post :create, round: { cutoff_at: @round.cutoff_at, name: @round.name, starts_at: @round.starts_at }
+      post :create, {round: { cutoff_at: @round.cutoff_at, 
+                              name: @round.name, 
+                              starts_at: @round.starts_at }},
+                    {user_id: @admin_user.id}
     end
 
     assert_redirected_to round_path(assigns(:round))
@@ -30,18 +34,24 @@ class RoundsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, id: @round
+    get :edit, {id: @round},
+               {user_id: @admin_user.id}
     assert_response :success
   end
 
   test "should update round" do
-    put :update, id: @round, round: { cutoff_at: @round.cutoff_at, name: @round.name, starts_at: @round.starts_at }
+    put :update, {id: @round, 
+                  round: { cutoff_at: @round.cutoff_at, 
+                           name: @round.name, 
+                           starts_at: @round.starts_at }},
+                 {user_id: @admin_user.id}
     assert_redirected_to round_path(assigns(:round))
   end
 
   test "should destroy round" do
     assert_difference('Round.count', -1) do
-      delete :destroy, id: @round
+      delete :destroy, {id: @round},
+                       {user_id: @admin_user.id}
     end
 
     assert_redirected_to rounds_path
