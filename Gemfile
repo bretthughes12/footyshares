@@ -58,7 +58,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'annotate'
+  gem 'annotate', '2.4.1.beta1'
   gem 'letter_opener'
 end
 
