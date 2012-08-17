@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% title "Match #{@match.name}" %>
+
+<h1><%= yield(:title) %></h1>
 
 <p>
   <b>Name:</b>
@@ -18,6 +20,11 @@
 <p>
   <b>Allow only one team:</b>
   <%= @match.allow_only_one_team %>
+</p>
+
+<p>
+  <b>Completed:</b>
+  <%= @match.completed %>
 </p>
 
 

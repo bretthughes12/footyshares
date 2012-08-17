@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :share do
-    team_id 1
-    user_id 1
+    association :team
+    association :user
     shares 1
   end
 end

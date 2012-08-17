@@ -1,5 +1,7 @@
 class Round < ActiveRecord::Base
   attr_accessible :cutoff_at, :name, :starts_at
+  
+  has_many :matches
 end
 # == Schema Information
 #

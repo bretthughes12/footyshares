@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% title "User: #{@user.name}" %>
+
+<h1><%= yield(:title) %></h1>
 
 <p>
   <b>Username:</b>
@@ -8,16 +10,6 @@
 <p>
   <b>Name:</b>
   <%= @user.name %>
-</p>
-
-<p>
-  <b>Hashed password:</b>
-  <%= @user.hashed_password %>
-</p>
-
-<p>
-  <b>Salt:</b>
-  <%= @user.salt %>
 </p>
 
 <p>
@@ -33,6 +25,11 @@
 <p>
   <b>Admin:</b>
   <%= @user.admin %>
+</p>
+
+<p>
+  <b>Starting Shares:</b>
+  <%= @user.starting_shares %>
 </p>
 
 <p>

@@ -2,13 +2,14 @@
 
 FactoryGirl.define do
   factory :user do
-    login "MyString"
-    name "MyString"
-    hashed_password "MyString"
-    salt "MyString"
-    email "MyString"
-    nickname "MyString"
-    admin false
-    shares_remaining 1
+    login                 "MyString"
+    name                  "MyString"
+    password              "secret"
+    password_confirmation { |a| "#{a.password}"}
+    email                 "MyString"
+    nickname              "MyString"
+    admin                 false
+    starting_shares       1
+    shares_remaining      1
   end
 end
