@@ -10,8 +10,45 @@
   <%= yield(:head) %>
 </head>
 <body>
+  <div id="page">
 
-<%= yield %>
+    <div id="header">
+        <% if current_user %>  
+			<p class="info">Logged in as <%= current_user.login %></font></p>
+        <% end %>
+    </div>
+
+    <div id="middle"> 
+	  <div id="main"> 
+		<p style="color: green"><%= flash[:notice] %></p>
+
+		<%= yield :layout %>
+      </div> 
+
+      <div id="sidebar">
+		<ul id="nav">
+			<li><%= link_to 'Home', root_url %></li>
+
+	        <% if current_user %>  
+	        	<li>
+	            	<%= link_to "Profile", edit_user_path(current_user) %>
+	        	</li>
+	        	<li>
+	            	<%= link_to "Logout", logout_path %>
+	        	</li>
+	        <% else %>
+	        	<li>
+	            	<%= link_to "Login", login_path %>
+	        	</li>
+	        <% end %>
+		</ul>
+      </div> 
+    </div> 
+
+    <div id="footer"> 
+    </div> 
+  	
+  </div>
 
 </body>
 </html>

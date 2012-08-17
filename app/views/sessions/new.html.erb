@@ -1,0 +1,25 @@
+<% title "Please log in" %>
+
+<div>
+    <fieldset>
+        <legend>Please Log In</legend>
+        <%= form_tag sessions_path do %>
+			<table>
+	            <tr>
+	                <td><label for="login" >Login:</label></td>
+	                <td><%= text_field_tag :login, params[:login] %></td>
+	            </tr>
+
+	            <tr>
+	                <td><label for="password" >Password:</label></td>
+	                <td><%= password_field_tag :password, params[:password] %></td>
+	            </tr>
+			</table>
+
+            <p>
+                <%= submit_tag "Login" %>
+            </p>
+        <% end %>
+		
+    </fieldset>
+</div>

@@ -1,12 +1,14 @@
 Footyshares::Application.routes.draw do
+
+  match '/login' => "sessions#new"
+  match '/logout' => "sessions#destroy"
+
+  resource :sessions, :only => [:new, :create, :destroy]
+
   resources :shares
-
   resources :users
-
   resources :teams
-
   resources :matches
-
   resources :rounds
 
   # The priority is based upon order of creation:
@@ -58,7 +60,7 @@ Footyshares::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'users#index'
 
   # See how all your routes lay out with "rake routes"
 
