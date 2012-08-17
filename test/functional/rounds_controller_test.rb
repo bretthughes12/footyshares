@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RoundsControllerTest < ActionController::TestCase
   setup do
-    @round = rounds(:one)
+    @round = FactoryGirl.create(:round)
   end
 
   test "should get index" do

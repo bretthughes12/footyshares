@@ -2,13 +2,8 @@
 
 <table>
   <tr>
-    <th>Username</th>
-    <th>Name</th>
-    <th>Hashed password</th>
-    <th>Salt</th>
-    <th>Email</th>
     <th>Nickname</th>
-    <th>Admin</th>
+	<th>Starting Shares</th>
     <th>Shares remaining</th>
     <th></th>
     <th></th>
@@ -17,13 +12,8 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.login %></td>
-    <td><%= user.name %></td>
-    <td><%= user.hashed_password %></td>
-    <td><%= user.salt %></td>
-    <td><%= user.email %></td>
     <td><%= user.nickname %></td>
-    <td><%= user.admin %></td>
+    <td><%= user.starting_shares %></td>
     <td><%= user.shares_remaining %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>

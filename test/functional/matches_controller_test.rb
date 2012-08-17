@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MatchesControllerTest < ActionController::TestCase
   setup do
-    @match = matches(:one)
+    @match = FactoryGirl.create(:match)
   end
 
   test "should get index" do

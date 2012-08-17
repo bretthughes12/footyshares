@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :user do
-    username "MyString"
+    login "MyString"
     name "MyString"
     hashed_password "MyString"
     salt "MyString"

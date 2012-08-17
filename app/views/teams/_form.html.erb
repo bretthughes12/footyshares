@@ -1,29 +1,11 @@
-<%= form_for(@team) do |f| %>
-  <% if @team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
-
-      <ul>
-      <% @team.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= semantic_form_for @team do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :match_id %>
+    <%= f.input :name %>
+    <%= f.input :winner %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :match_id %><br />
-    <%= f.number_field :match_id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :winner %><br />
-    <%= f.check_box :winner %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
 <% end %>

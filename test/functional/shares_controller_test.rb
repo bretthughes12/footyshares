@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SharesControllerTest < ActionController::TestCase
   setup do
-    @share = shares(:one)
+    @share = FactoryGirl.create(:share)
   end
 
   test "should get index" do
