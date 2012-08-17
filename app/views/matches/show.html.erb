@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @match.name %>
+</p>
+
+<p>
+  <b>Venue:</b>
+  <%= @match.venue %>
+</p>
+
+<p>
+  <b>Round:</b>
+  <%= @match.round_id %>
+</p>
+
+<p>
+  <b>Allow only one team:</b>
+  <%= @match.allow_only_one_team %>
+</p>
+
+
+<%= link_to 'Edit', edit_match_path(@match) %> |
+<%= link_to 'Back', matches_path %>

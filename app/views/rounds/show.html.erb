@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @round.name %>
+</p>
+
+<p>
+  <b>Cutoff at:</b>
+  <%= @round.cutoff_at %>
+</p>
+
+<p>
+  <b>Starts at:</b>
+  <%= @round.starts_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_round_path(@round) %> |
+<%= link_to 'Back', rounds_path %>

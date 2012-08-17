@@ -1,0 +1,11 @@
+<%= semantic_form_for @share do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :team_id %>
+    <%= f.input :user_id %>
+    <%= f.input :shares %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>
