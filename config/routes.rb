@@ -1,9 +1,11 @@
 Footyshares::Application.routes.draw do
 
-  match '/login' => "sessions#new"
-  match '/logout' => "sessions#destroy"
+  match '/login' => "sessions#new", :as => :login
+  match '/logout' => "sessions#destroy", :as => :logout
+  match '/signup' => 'signups#new', :as => :signup
 
   resource :sessions, :only => [:new, :create, :destroy]
+  resource :signups, :only => :create
 
   resources :shares
   resources :users

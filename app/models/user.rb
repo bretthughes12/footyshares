@@ -12,12 +12,11 @@ class User < ActiveRecord::Base
                               format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, 
                                         message: "invalid format" }
   validates :password,        confirmation: true
-  validates :hashed_password, presence: { message: "Missing password" }
 
   attr_accessor   :password
   attr_protected  :admin, :id, :salt
   
-  after_validation :accumulate_errors
+  before_validation :check_password_provided
   
   def self.authenticate(login, password)
     user = self.find_by_login(login)
@@ -48,8 +47,8 @@ class User < ActiveRecord::Base
     self.salt = self.object_id.to_s + rand.to_s
   end
 
-  def accumulate_errors
-    self.errors[:base] << self.errors[:hashed_password]
+  def check_password_provided
+    errors[:base] << "Missing password" if hashed_password.blank?
   end
 end
 # == Schema Information

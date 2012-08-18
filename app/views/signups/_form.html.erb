@@ -1,0 +1,15 @@
+<%= semantic_form_for @user, :as => :signup, :url => {:action => :create} do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :login, label: 'Username' %>
+    <%= f.input :email %>
+    <%= f.input :name, label: 'Your real name' %>
+    <%= f.input :nickname, hint: 'Leave blank to use your real name on ladders' %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation, label: 'Repeat Password' %>
+    <%= f.input :starting_shares, label: 'Shares', hint: 'Starting share price is 10 cents, minimum purchase is 50 shares', input_html: {size: 4} %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, as: :input, label: 'Sign Up'  %>
+  <% end %>
+<% end %>
