@@ -1,13 +1,11 @@
 <%= semantic_form_for @user do |f| %>
   <%= f.inputs do %>
-    <%= f.input :login %>
-    <%= f.input :password %>
-    <%= f.input :password_confirmation %>
-    <%= f.input :name %>
+    <%= f.input :login, label: 'Username' %>
     <%= f.input :email %>
-    <%= f.input :nickname %>
-    <%= f.input :starting_shares %>
-    <%= f.input :shares_remaining %>
+    <%= f.input :name, label: 'Your real name' %>
+    <%= f.input :nickname, hint: 'Leave blank to use your real name on ladders' %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation, label: 'Repeat Password' %>
   <% end %>
 
   <%= f.actions do %>

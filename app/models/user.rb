@@ -7,11 +7,16 @@ class User < ActiveRecord::Base
   validates :login,           presence: true, 
                               uniqueness: true,
                               length: { maximum: 255 }
+  validates :nickname,        uniqueness: true, 
+                              allow_blank: true,
+                              length: { maximum: 255 }
   validates :email,           presence: true,
                               length: { maximum: 100 },
                               format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, 
                                         message: "invalid format" }
   validates :password,        confirmation: true
+  validates :starting_shares, presence: true, 
+                              numericality: { greater_than_or_equal_to: 50 }
 
   attr_accessor   :password
   attr_protected  :admin, :id, :salt
@@ -34,6 +39,10 @@ class User < ActiveRecord::Base
     return if pwd.blank?
     create_new_salt
     self.hashed_password = User.encrypted_password(self.password, self.salt)
+  end
+  
+  def display_name
+    nickname.blank? ? name : nickname
   end
   
   private

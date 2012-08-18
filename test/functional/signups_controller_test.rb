@@ -14,7 +14,7 @@ class SignupsControllerTest < ActionController::TestCase
     assert_difference('User.count') do
       post :create, signup: { email: @user.email, 
                               name: @user.name, 
-                              nickname: @user.nickname, 
+                              nickname: "bruce", 
                               starting_shares: @user.starting_shares, 
                               login: "bruce",
                               password: "secret",

@@ -7,10 +7,10 @@ FactoryGirl.define do
     password              "secret"
     password_confirmation { |a| "#{a.password}"}
     email                 "My@String.com"
-    nickname              "MyString"
+    sequence(:nickname)   { |n| "peter#{n}" }
     admin                 false
-    starting_shares       1
-    shares_remaining      1
+    starting_shares       50
+    shares_remaining      50
   end
   
   trait :admin do
