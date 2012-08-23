@@ -16,12 +16,18 @@ class User < ActiveRecord::Base
                                         message: "invalid format" }
   validates :password,        confirmation: true
   validates :starting_shares, presence: true, 
-                              numericality: { greater_than_or_equal_to: 50 }
+                              numericality: { greater_than_or_equal_to: 50,
+                                              only_integer: true }
 
   attr_accessor   :password
   attr_protected  :admin, :id, :salt
   
   before_validation :check_password_provided
+  before_validation :validate_shares_in_lots_of_50
+  
+  before_create :initialize_shares_remaining
+  
+  STARTING_SHARE_PRICE_IN_CENTS = 10
   
   def self.authenticate(login, password)
     user = self.find_by_login(login)
@@ -45,6 +51,18 @@ class User < ActiveRecord::Base
     nickname.blank? ? name : nickname
   end
   
+  def self.current_shareprice
+    (total_shares_invested * STARTING_SHARE_PRICE_IN_CENTS).to_f / total_shares_remaining
+  end
+  
+  def self.total_shares_invested
+    User.sum(&:starting_shares)
+  end
+  
+  def self.total_shares_remaining
+    User.sum(&:shares_remaining)
+  end
+  
   private
 
   def self.encrypted_password(password, salt)
@@ -57,7 +75,15 @@ class User < ActiveRecord::Base
   end
 
   def check_password_provided
-    errors[:base] << "Missing password" if hashed_password.blank?
+    errors[:password] << "Missing password" if hashed_password.blank?
+  end
+  
+  def validate_shares_in_lots_of_50
+    errors[:starting_shares] << "Shares must be purchsed in lots of 50" if starting_shares % 50 != 0
+  end
+  
+  def initialize_shares_remaining
+    self.shares_remaining = self.starting_shares
   end
 end
 # == Schema Information

@@ -8,7 +8,7 @@ body, p {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Georgia, Times, Times New Roman, serif;
-  color:#083e46;
+  color:#888;
 }
 
 .action {
@@ -21,9 +21,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 768px;
 }
 
-#header, #footer {background-color:#d8635a}
-#middle {background-color: #d8827b }
-#main {background-color:#ffffff }
+#header, #footer {background-color:#29264D}
+#middle {background-color: #7b78a6 }
+#main {background-color:#eeeeee }
 
 a {
   color:#19626c; 
@@ -43,7 +43,7 @@ a:hover {
 
   #sidebar #nav li {
     color: #FFFFFF;
-    border-bottom: 1px solid #B03127;
+    border-bottom: 1px solid #0f0c32;
     font-size:12px;
   }
 
@@ -54,7 +54,7 @@ a:hover {
 
   #sidebar #nav a:hover {
     color: #FFFFFF;
-    background-color: #B03127;
+    background-color: #6c67a6;
   }
 
   #sidebar #nav ul li {
@@ -70,6 +70,13 @@ a:hover {
 
 #header p {
   color: #FFFFFF;
+}
+
+#header h1 {
+  color: #C9C3E6;
+  padding-left: 18px;
+  padding-top: 36px;
+  font-size: 36px;
 }
 
 .list-actions {
@@ -118,12 +125,12 @@ a:hover {
     color: #EEE;
   }
   .file-table col.file {
-     background-color: #4DA9B5;
+     background-color: #8262A5;
      color: #EEE; 
      width: 20em;
   } 
   .file-table col.data {
-     background-color: #69ACB5;
+     background-color: #8b74B5;
      color: #EEE; 
   } 
   .file-table td {
@@ -133,7 +140,7 @@ a:hover {
   } 
   .file-table th {
      border:2px solid #CCC;
-     background-color: #19626C;
+     background-color: #36224b;
      color: #FFFFFF;
      font-weight: bold;
      text-align: left;
