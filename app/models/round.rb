@@ -2,6 +2,17 @@ class Round < ActiveRecord::Base
   attr_accessible :cutoff_at, :name, :starts_at
   
   has_many :matches
+  
+  # TODO: add logic to calculate when round is open
+  def open
+    true
+  end
+  
+  # TODO: add logic to calculate current round 
+  # Once results for previous round are calculated, the next round becomes the current round
+  def current
+    Round.first
+  end
 end
 # == Schema Information
 #

@@ -9,7 +9,8 @@ class UserMailer < ActionMailer::Base
   def welcome(user)
     @user = user
 
-    mail(to:      user.email, 
+    mail(to:      user.email,
+         cc:      "goodo73@gmail.com", 
          subject: "[Footy Share Tipping] Welcome to the Footy Share Tipping website")
   end
 end

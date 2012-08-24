@@ -8,10 +8,12 @@ class SignupsController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        flash[:notice] = 'Thank you for your time. Check your inbox for a confirmation email.'
+        flash[:notice] = 'Thank you for your time. Check your inbox for a confirmation email. You are now logged in'
         UserMailer.welcome(@user).deliver       
-        @user = User.new
-        format.html { redirect_to signup_url }
+        format.html do
+          session[:user_id] = @user.id
+          redirect_to root_url
+        end
       else
         format.html { render action: "new" }
       end

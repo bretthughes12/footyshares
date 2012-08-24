@@ -2,9 +2,17 @@ Hi <%= @user.name %>
 
 Thanks for signing up with the Footy Share Tipping website.
 
-Please cut and paste this link into your browser to access the website and to allocate your shares.
+Name:     <%= @user.name %>
+<% unless @user.nickname.blank? %>
+Nickname: <%= @user.nickname %>
+<% end %>
+Shares:   <%= @user.starting_shares %>
 
-https://footyshares.heroku.com
+Please cut and paste this link into your browser to access the website
+
+https://footyshares.heroku.com/login
+
+To allocate your shares, select the 'Invest' link from the home page.
 
 Happy tipping!
 

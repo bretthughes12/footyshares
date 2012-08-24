@@ -21,5 +21,6 @@ end
 #  created_at       :datetime        not null
 #  updated_at       :datetime        not null
 #  starting_shares  :integer(4)      default(0)
+#  paid             :boolean(1)      default(FALSE)
 #
 

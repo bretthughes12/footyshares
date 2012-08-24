@@ -13,7 +13,7 @@ class SignupsControllerTest < ActionController::TestCase
   test "should create signup" do
     assert_difference('User.count') do
       post :create, signup: { email: @user.email, 
-                              name: @user.name, 
+                              name: "Bruce", 
                               nickname: "bruce", 
                               starting_shares: @user.starting_shares, 
                               login: "bruce",
@@ -21,7 +21,7 @@ class SignupsControllerTest < ActionController::TestCase
                               password_confirmation: "secret" }
     end
 
-    assert_redirected_to signup_path
+    assert_redirected_to root_path
   end
 
 end
