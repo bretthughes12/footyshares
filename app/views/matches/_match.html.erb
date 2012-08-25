@@ -1,0 +1,11 @@
+<tr>
+    <td><%= match.round.name if match.round %></td>
+    <td><%= match.name %></td>
+    <td><%= match.venue %></td>
+    <td><%= match.allow_only_one_team %></td>
+	<td class="list-actions">
+		<%= link_to 'Show', match %>
+	    <%= link_to 'Edit', edit_match_path(match) if can? :update, match %>
+		<%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, match %>
+	</td>
+</tr>

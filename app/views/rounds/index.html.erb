@@ -2,28 +2,20 @@
 
 <h1><%= yield(:title) %></h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Cutoff at</th>
-    <th>Starts at</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="file-table">
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+	<tr>
+	    <th>Name</th>
+	    <th>Cutoff at</th>
+	    <th>Starts at</th>
+	    <th>Actions</th>
+  	</tr>
 
-<% @rounds.each do |round| %>
-  <tr>
-    <td><%= round.name %></td>
-    <td><%= round.cutoff_at %></td>
-    <td><%= round.starts_at %></td>
-    <td><%= link_to 'Show', round %></td>
-    <td><%= link_to 'Edit', edit_round_path(round) %></td>
-    <td><%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+	<%= render @rounds %>
 </table>
 
 <br />
-
-<%= link_to 'New Round', new_round_path %>
+<%= link_to 'New Round', new_round_path if can? :create, Round %>

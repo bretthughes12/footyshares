@@ -1,8 +1,8 @@
 <%= semantic_form_for @round do |f| %>
   <%= f.inputs do %>
     <%= f.input :name %>
-    <%= f.input :cutoff_at %>
-    <%= f.input :starts_at %>
+	<li class="datetime input optional"><label>Starts at</label><span class="date"><%= f.datetime_select(:starts_at, :order => [:day, :month, :year]) %></span>
+	<li class="datetime input optional"><label>Cutoff at</label><span class="date"><%= f.datetime_select(:cutoff_at, :order => [:day, :month, :year]) %></span>
   <% end %>
 
   <%= f.actions do %>

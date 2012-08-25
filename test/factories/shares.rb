@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :share do
-    association :team
-    association :user
-    shares 1
+    team
+    user
+    shares 50
   end
 end

@@ -1,0 +1,10 @@
+<tr>
+    <td><%= team.match.name if team.match %></td>
+    <td><%= team.name %></td>
+    <td><%= team.winner %></td>
+	<td class="list-actions">
+		<%= link_to 'Show', team %>
+	    <%= link_to 'Edit', edit_team_path(team) if can? :update, team %>
+		<%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, team %>
+	</td>
+</tr>

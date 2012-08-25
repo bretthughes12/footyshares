@@ -23,4 +23,4 @@ Match.create([{ :name => '1st Qualifying Final', :round_id => round_1.id },
               { :name => '2nd Semi Final', :round_id => round_2.id },
               { :name => '1st Preliminary Final', :round_id => round_3.id },
               { :name => '2nd Preliminary Final', :round_id => round_3.id },
-              { :name => 'Grand Final', :round_id => round_4.id, :allow_only_one_team => true },])
+              { :name => 'Grand Final', :round_id => round_4.id, :venue => 'MCG', :allow_only_one_team => true },])

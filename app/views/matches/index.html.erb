@@ -2,30 +2,23 @@
 
 <h1><%= yield(:title) %></h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Venue</th>
-    <th>Round</th>
-    <th>Allow only one team</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="file-table">
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+	<tr>
+	    <th>Round</th>
+	    <th>Name</th>
+		<th>Venue</th>
+		<th>Allow only one team</th>
+	    <th>Actions</th>
+  	</tr>
 
-<% @matches.each do |match| %>
-  <tr>
-    <td><%= match.name %></td>
-    <td><%= match.venue %></td>
-    <td><%= match.round_id %></td>
-    <td><%= match.allow_only_one_team %></td>
-    <td><%= link_to 'Show', match %></td>
-    <td><%= link_to 'Edit', edit_match_path(match) %></td>
-    <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+	<%= render @matches %>
 </table>
 
 <br />
 
-<%= link_to 'New Match', new_match_path %>
+<%= link_to 'New Match', new_match_path if can? :create, Match %>

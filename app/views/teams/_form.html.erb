@@ -1,6 +1,6 @@
 <%= semantic_form_for @team do |f| %>
   <%= f.inputs do %>
-    <%= f.input :match_id %>
+    <%= f.input :match, collection: Match.all %>
     <%= f.input :name %>
     <%= f.input :winner %>
   <% end %>

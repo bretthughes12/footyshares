@@ -10,8 +10,12 @@ class Round < ActiveRecord::Base
   
   # TODO: add logic to calculate current round 
   # Once results for previous round are calculated, the next round becomes the current round
-  def current
+  def self.current
     Round.first
+  end
+  
+  def teams
+    self.matches.collect { |m| m.teams }.flatten
   end
 end
 # == Schema Information

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :team do
-    match_id 1
+    match
     name "MyString"
     winner false
   end

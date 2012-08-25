@@ -12,3 +12,14 @@ form.formtastic fieldset ol li p.inline-errors { font-weight:bold; }
 .formtastic .stringish input {
   width:auto;
 }
+
+/* OVERRIDES for dates, fields with manually-filled-out options and info fields
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset ol li .date,
+form.formtastic fieldset ol li .options,
+form.formtastic fieldset ol li .info {
+  float:left;
+  width:74%;
+  margin:-1.5em 0 0 0;
+  padding:0 0 0 25%;
+ }

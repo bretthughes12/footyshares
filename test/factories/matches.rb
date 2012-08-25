@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :match do
     name "MyString"
     venue "MyString"
-    round_id 1
+    round
     allow_only_one_team false
   end
 end
