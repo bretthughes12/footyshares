@@ -59,10 +59,10 @@ a:hover {
 
   #sidebar #nav ul li {
     border: 0 none transparent;
-    border-bottom: 1px solid #d8827b;
-    border-left: 1px solid #d8827b;
-    border-right: 1px solid #d8827b;
-    background-color: #d8635a;
+    border-top: 1px solid #0f0c32;
+    border-left: 1px solid #0f0c32;
+    border-right: 1px solid #0f0c32;
+    background-color: lighten(#7B78A6, 5);
     font-size: 100%;
     font-weight: normal;
     width: 10em;

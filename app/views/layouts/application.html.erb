@@ -32,6 +32,19 @@
 	        <% if current_user %>  
 				<li><%= link_to 'Shareholdings', root_url %></li>
 				<li><%= link_to 'Invest', root_url %></li>
+
+		        <% if current_user.admin %>
+					<li><%= link_to 'Admin', root_url %>
+						<ul>
+							<li><%= link_to 'Users', root_url %></li>
+							<li><%= link_to 'Rounds', rounds_url %></li>
+							<li><%= link_to 'Matches', matches_url %></li>
+							<li><%= link_to 'Teams', teams_url %></li>
+							<li><%= link_to 'Shares', shares_url %></li>
+						</ul>
+					</li>
+		        <% end %>
+
 	        	<li><%= link_to "Profile", edit_user_path(current_user) %></li>
 	        	<li><%= link_to "Logout", logout_path %></li>
 	        <% else %>
