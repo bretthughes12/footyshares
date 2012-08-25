@@ -11,6 +11,6 @@ class UserMailer < ActionMailer::Base
 
     mail(to:      user.email,
          cc:      "goodo73@gmail.com", 
-         subject: "[Footy Share Tipping] Welcome to the Footy Share Tipping website")
+         subject: "[AFL Finals Sharemarket] Welcome to the AFL Finals Sharemarket website")
   end
 end
