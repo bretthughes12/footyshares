@@ -29,7 +29,7 @@ class UsersControllerTest < ActionController::TestCase
                             starting_shares: 100 }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to root_path
   end
 
   test "should show user" do
@@ -51,7 +51,7 @@ class UsersControllerTest < ActionController::TestCase
                           shares_remaining: @user.shares_remaining, 
                           login: @user.login }},
                  {user_id: @admin_user.id}
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to root_path
   end
 
   test "should destroy user" do

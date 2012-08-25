@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   
   before_validation :check_password_provided
   before_validation :validate_shares_in_lots_of_50
+  before_validation :downcase_login_field
   
   before_create :initialize_shares_remaining
   
@@ -86,7 +87,11 @@ class User < ActiveRecord::Base
   end
   
   def initialize_shares_remaining
-    self.shares_remaining = self.starting_shares
+    self.shares_remaining = self.starting_shares 
+  end
+  
+  def downcase_login_field
+    self.login = self.login.downcase
   end
 end
 # == Schema Information
