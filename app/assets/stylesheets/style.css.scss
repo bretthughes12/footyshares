@@ -33,7 +33,7 @@ a {
 a:visited {color:#4da9b5;}
 
 a:hover {
-  color:#FFF; 
+  color:#888; 
   text-decoration:underline;
 }
 
@@ -79,6 +79,10 @@ a:hover {
   font-size: 36px;
 }
 
+.simple-list {
+  list-style: none;
+}
+
 .list-actions {
   font-size:    x-small;
   text-align:   right;
@@ -89,7 +93,7 @@ a:hover {
 .pagination a {
     text-decoration: none;
     color: #083F46;
-  padding: 3px;
+    padding: 3px;
     margin: 3px;
 }
   .pagination a {
@@ -123,6 +127,9 @@ a:hover {
 } 
   .file-table a:link, .file-table a:visited {
     color: #EEE;
+  }
+  .file-table a:hover {
+    color: #CCC;
   }
   .file-table col.file {
      background-color: #8262A5;

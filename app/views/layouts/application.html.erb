@@ -31,10 +31,10 @@
 		<ul id="nav">
 	        <% if current_user %>  
 				<li><%= link_to 'Shareholdings', root_url %></li>
-				<li><%= link_to 'Invest', root_url %></li>
+				<li><%= link_to 'Invest', invest_url %></li>
 
 		        <% if current_user.admin %>
-					<li><%= link_to 'Admin', root_url %>
+					<li><%= link_to 'Admin', admin_url %>
 						<ul>
 							<li><%= link_to 'Users', root_url %></li>
 							<li><%= link_to 'Rounds', rounds_url %></li>

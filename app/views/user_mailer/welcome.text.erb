@@ -3,8 +3,10 @@ Hi <%= @user.name %>
 Thanks for signing up with the AFL Finals Sharemarket website.
 
 Name:     <%= @user.name %>
+
 <% unless @user.nickname.blank? %>
 Nickname: <%= @user.nickname %>
+
 <% end %>
 Shares:   <%= @user.starting_shares %>
 

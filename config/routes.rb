@@ -1,11 +1,14 @@
 Footyshares::Application.routes.draw do
 
-  match '/login' => "sessions#new", :as => :login
-  match '/logout' => "sessions#destroy", :as => :logout
-  match '/signup' => 'signups#new', :as => :signup
+  match '/login' => "sessions#new", as: :login
+  match '/logout' => "sessions#destroy", as: :logout
+  match '/signup' => 'signups#new', as: :signup
 
-  resource :sessions, :only => [:new, :create, :destroy]
-  resource :signups, :only => :create
+  match '/invest' => "static#invest", as: :invest
+  match '/admin' => "static#admin", as: :admin
+
+  resource :sessions, only: [:new, :create, :destroy]
+  resource :signups, only: :create
 
   resources :shares
   resources :users
@@ -62,7 +65,7 @@ Footyshares::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'users#index'
+  root to: 'users#index'
 
   # See how all your routes lay out with "rake routes"
 
