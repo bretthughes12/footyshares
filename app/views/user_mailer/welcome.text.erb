@@ -2,13 +2,21 @@ Hi <%= @user.name %>
 
 Thanks for signing up with the AFL Finals Sharemarket website.
 
-Name:     <%= @user.name %>
-
 <% unless @user.nickname.blank? %>
-Nickname: <%= @user.nickname %>
+Nickname:       <%= @user.nickname %>
 
 <% end %>
-Shares:   <%= @user.starting_shares %>
+Shares:         <%= @user.starting_shares %>
+
+Amount Payable: <%= number_to_currency(@user.amount_payable_in_dollars) %> 
+
+Payment to be made to Mike Goodwin, either with cash or by funds transfer:
+
+Michael Goodwin
+
+013006 / 353515448
+
+In the case of funds transfer, please include the comment 'Finals shares' when making the transfer. Upon doing so, reply (all) to this email to advise Mike that you have paid.
 
 Please cut and paste this link into your browser to access the website
 

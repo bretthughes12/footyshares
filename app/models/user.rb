@@ -55,6 +55,10 @@ class User < ActiveRecord::Base
     nickname.blank? ? name : nickname
   end
   
+  def amount_payable_in_dollars
+    self.starting_shares * STARTING_SHARE_PRICE_IN_CENTS / 100
+  end
+  
   def self.current_shareprice
     (total_shares_invested * STARTING_SHARE_PRICE_IN_CENTS).to_f / total_shares_remaining
   end
