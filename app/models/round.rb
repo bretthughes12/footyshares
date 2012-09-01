@@ -12,6 +12,7 @@ class Round < ActiveRecord::Base
   # Once results for previous round are calculated, the next round becomes the current round
   def self.current
     Round.first
+    # Round.find(3)
   end
   
   def teams

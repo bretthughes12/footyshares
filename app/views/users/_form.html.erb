@@ -2,13 +2,13 @@
   <%= f.inputs do %>
     <%= f.input :login, label: 'Username' %>
     <%= f.input :email %>
-    <%= f.input :name, label: 'Your real name' %>
+    <%= f.input :name, label: 'Your real name', hint: 'First name and surname, please' %>
     <%= f.input :nickname, hint: 'Leave blank to use your real name on ladders' %>
     <%= f.input :password %>
     <%= f.input :password_confirmation, label: 'Repeat Password' %>
   <% end %>
 
   <%= f.actions do %>
-    <%= f.action :submit, :as => :input %>
+    <%= f.action :submit, :as => :input, label: "Update" %>
   <% end %>
 <% end %>

@@ -10,7 +10,12 @@ Footyshares::Application.routes.draw do
   resource :sessions, only: [:new, :create, :destroy]
   resource :signups, only: :create
 
-  resources :shares
+  resources :shares do
+    collection do
+      get :invest
+      put :update_multiple
+    end
+  end
   resources :users
   resources :teams
   resources :matches
