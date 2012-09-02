@@ -11,7 +11,7 @@ class Round < ActiveRecord::Base
   # TODO: add logic to calculate current round 
   # Once results for previous round are calculated, the next round becomes the current round
   def self.current
-    Round.first
+    Round.find(1)
     # Round.find(3)
   end
   
