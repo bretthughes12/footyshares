@@ -3,6 +3,9 @@ class Share < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :team
+
+  validates :shares, presence: true, 
+                     numericality: { only_integer: true }
   
   def self.prepare_for_user_and_round(user, round)
     if user && round
@@ -25,7 +28,12 @@ class Share < ActiveRecord::Base
     share = Share.find_by_user_id_and_team_id(user_id, team_id) || Share.new(user_id: user_id, team_id: team_id)
     
     share.shares = shares
-    share.save
+    
+    if share.save
+      true
+    else
+      false
+    end
   end
 end
 # == Schema Information
