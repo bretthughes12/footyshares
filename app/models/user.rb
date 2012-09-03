@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Comparable
+  
   attr_accessible :admin, :email, :name, :nickname, :shares_remaining, 
                   :login, :starting_shares, :shares_remaining
 
@@ -32,6 +34,10 @@ class User < ActiveRecord::Base
   before_create :initialize_shares_remaining
   
   STARTING_SHARE_PRICE_IN_CENTS = 10
+  
+  def <=>(other)
+    self.display_name <=> other.display_name
+  end
   
   def self.authenticate(login, password)
     user = self.find_by_login(login)

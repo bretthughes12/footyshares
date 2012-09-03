@@ -11,4 +11,10 @@ class UsersController < InheritedResources::Base
   def create
     create! { root_url }
   end
+
+private
+  
+  def collection
+    @users = User.all.sort
+  end
 end

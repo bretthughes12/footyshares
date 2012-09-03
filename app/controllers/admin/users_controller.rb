@@ -16,4 +16,10 @@ class Admin::UsersController < InheritedResources::Base
   def destroy
     destroy! { admin_users_url }
   end
+
+private
+  
+  def collection
+    @users = User.all.sort
+  end
 end
