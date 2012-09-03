@@ -1,0 +1,24 @@
+<% title "Listing Users" %>
+
+<h1><%= yield(:title) %></h1>
+
+<table class="file-table">
+	<col class="file" />
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+    <tr>
+    	<th>Name</th>
+    	<th>Nickname</th>
+    	<th>Shares</th>
+    	<th>Paid</th>
+    	<th>Actions</th>
+  	</tr>
+
+	<%= render @users %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_admin_user_path if can? :create, User %>

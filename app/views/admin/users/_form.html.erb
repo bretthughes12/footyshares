@@ -1,0 +1,16 @@
+<%= semantic_form_for(@user, :url => url, :html => { :method => method }) do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :login, label: 'Username' %>
+    <%= f.input :email %>
+    <%= f.input :name, label: 'Your real name', hint: 'First name and surname, please' %>
+    <%= f.input :nickname, hint: 'Leave blank to use your real name on ladders' %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation, label: 'Repeat Password' %>
+    <%= f.input :starting_shares %>
+    <%= f.input :shares_remaining %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input, label: "Update" %>
+  <% end %>
+<% end %>

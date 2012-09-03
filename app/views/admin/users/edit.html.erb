@@ -1,0 +1,5 @@
+<% title "Editing user" %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= render :partial => 'form', locals: {url: admin_user_url(:id => @user), method: :put} %>
