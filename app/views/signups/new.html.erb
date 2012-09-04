@@ -2,4 +2,9 @@
 
 <h1><%= yield(:title) %></h1>
 
-<%= render 'form' %>
+<% if @round.open %>
+	<%= render 'form' %>
+<% else %>
+	<p>This competition is now closed for new entries for the year.</p>
+	<p>Please try again next year.</p>
+<% end %>
