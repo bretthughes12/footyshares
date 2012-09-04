@@ -8,7 +8,7 @@ class Share < ActiveRecord::Base
 
   validates :shares, presence: true, 
                      numericality: { only_integer: true }
-  
+
   def team_name
     if self.team
       self.team.name
@@ -17,12 +17,16 @@ class Share < ActiveRecord::Base
     end
   end
 
-  def round_name
+  def round
     if self.team && self.team.match && self.team.match.round
-      self.team.match.round.name
+      self.team.match.round
     else
-      ""
+      nil
     end
+  end
+
+  def round_name
+    round.nil? ? "" : round.name
   end
   
   def self.prepare_for_user_and_round(user, round)
