@@ -3,6 +3,7 @@ require 'test_helper'
 class SignupsControllerTest < ActionController::TestCase
   setup do
     @user = FactoryGirl.create(:user)
+    @round = FactoryGirl.create(:round)
   end
 
   test "should get new" do

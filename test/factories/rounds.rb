@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :round do
     name "MyString"
-    cutoff_at "2012-08-17"
+    cutoff_at "2013-08-17"
     starts_at "2012-08-17"
   end
 end
