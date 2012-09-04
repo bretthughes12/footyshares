@@ -17,6 +17,16 @@ class Admin::UsersController < InheritedResources::Base
     destroy! { admin_users_url }
   end
 
+  # PUT /users/1
+  def paid
+    @user.mark_as_paid
+    @user.save
+    
+    respond_to do |format|
+      format.html { redirect_to admin_users_url }
+    end
+  end
+
 private
   
   def collection

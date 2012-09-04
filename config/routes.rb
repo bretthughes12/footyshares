@@ -16,13 +16,17 @@ Footyshares::Application.routes.draw do
       put :update_multiple
     end
   end
-  resources :users
-  resources :teams
-  resources :matches
+  resources :users 
   resources :rounds
+  resources :matches
+  resources :teams
 
   namespace :admin do
-    resources :users
+    resources :users do
+      member do
+        put :paid
+      end
+    end
   end
 
   # The priority is based upon order of creation:

@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
     self.starting_shares * STARTING_SHARE_PRICE_IN_CENTS / 100
   end
   
+  def mark_as_paid
+    self.paid = true
+  end
+  
   def self.current_shareprice
     (total_shares_invested * STARTING_SHARE_PRICE_IN_CENTS).to_f / total_shares_remaining
   end
