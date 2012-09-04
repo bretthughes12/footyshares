@@ -4,8 +4,26 @@ class Share < ActiveRecord::Base
   belongs_to :user
   belongs_to :team
 
+  default_scope where('shares > 0')
+
   validates :shares, presence: true, 
                      numericality: { only_integer: true }
+  
+  def team_name
+    if self.team
+      self.team.name
+    else
+      ""
+    end
+  end
+
+  def round_name
+    if self.team && self.team.match && self.team.match.round
+      self.team.match.round.name
+    else
+      ""
+    end
+  end
   
   def self.prepare_for_user_and_round(user, round)
     if user && round

@@ -3,16 +3,13 @@ class Round < ActiveRecord::Base
   
   has_many :matches
   
-  # TODO: add logic to calculate when round is open
   def open
-    true
+    cutoff_at > Time.now
   end
   
-  # TODO: add logic to calculate current round 
   # Once results for previous round are calculated, the next round becomes the current round
   def self.current
-    Round.find(1)
-    # Round.find(3)
+    Round.where('starts_at < now()').order('starts_at DESC').first
   end
   
   def teams
