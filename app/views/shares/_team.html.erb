@@ -1,12 +1,14 @@
-<%= fields_for "shares[]", share do |f| %>
 <tr valign="top">
 	<td> 
-		<%= h(share.team.name) %>
+		<strong><%= h(team.match.name) %></strong>
 	</td>
 	<td> 
-		<%= f.hidden_field :team_id %>
-		<%= f.hidden_field :user_id %>
-		<%= f.text_field :shares, size: 4  %>
+		<%= h(team.match.venue) %>
+	</td>
+	<td> 
+		<%= h(team.name) %>
+	</td>
+	<td> 
+		<%= team.total_shares  %>
 	</td>
 </tr>
-<% end %>

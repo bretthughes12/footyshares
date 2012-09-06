@@ -3,6 +3,10 @@ class Team < ActiveRecord::Base
   
   belongs_to :match
   has_many :shares
+  
+  def total_shares
+    shares.sum(&:shares)
+  end
 end
 # == Schema Information
 #
