@@ -1,7 +1,14 @@
 <tr>
     <td><%= team.match.name if team.match %></td>
     <td><%= team.name %></td>
-    <td class=<%= team.winner ? "winner" : "" %>><%= team.winner %></td>
+    <td class=<%= team.winner ? "winner" : "" %>>
+		<%= check_box_tag 'team[winner]', "1", team.winner, 
+		     { 'data-href' => team_path(:id => team.id),
+		       'data-spinner-id' => "#spinner-#{team.id}",	 
+			   :class => "updateable-checkbox" } %>
+		<%= image_tag 'spinner.gif', :id => "spinner-#{team.id}",
+			:style => 'display: none' %>
+	</td>
 	<td class="list-actions">
 		<%= link_to 'Show', team %>
 	    <%= link_to 'Edit', edit_team_path(team) if can? :update, team %>
