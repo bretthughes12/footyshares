@@ -10,9 +10,9 @@ user.save
 
 # Create each round
 round_1 = Round.create(:name => 'Week 1')
-round_2 = Round.create(:name => 'Week 2')
-round_3 = Round.create(:name => 'Week 3')
-round_4 = Round.create(:name => 'Week 4')
+round_2 = Round.create(:name => 'Week 2', :prev_round_id => round_1.id)
+round_3 = Round.create(:name => 'Week 3', :prev_round_id => round_2.id)
+round_4 = Round.create(:name => 'Week 4', :prev_round_id => round_3.id)
 
 # Create each of the matches to be played
 Match.create([{ :name => '1st Qualifying Final', :round_id => round_1.id },

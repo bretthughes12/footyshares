@@ -9,6 +9,10 @@ class Team < ActiveRecord::Base
   def total_shares
     shares.sum(&:shares)
   end
+  
+  def share_percentage
+    (total_shares * 100).to_f / match.round.starting_shares
+  end
 end
 # == Schema Information
 #

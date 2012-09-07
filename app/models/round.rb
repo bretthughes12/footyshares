@@ -1,7 +1,8 @@
 class Round < ActiveRecord::Base
-  attr_accessible :cutoff_at, :name, :starts_at
+  attr_accessible :cutoff_at, :name, :starts_at, :prev_round_id
   
   has_many :matches
+  has_one :previous, class_name: 'Round', foreign_key: 'prev_round_id'
   
   def open
     cutoff_at > Time.now
@@ -15,6 +16,15 @@ class Round < ActiveRecord::Base
   def teams
     self.matches.collect { |m| m.teams }.flatten
   end
+  
+  def starting_shares
+    if self.prev_round_id.nil?
+      User.total_shares_invested
+    else
+      r = self.previous
+      r.shares_remaining
+    end
+  end
 end
 # == Schema Information
 #
@@ -27,5 +37,6 @@ end
 #  created_at       :datetime        not null
 #  updated_at       :datetime        not null
 #  shares_remaining :integer(4)      default(0)
+#  prev_round_id    :integer(4)      default(0)
 #
 

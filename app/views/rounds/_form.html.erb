@@ -3,6 +3,7 @@
     <%= f.input :name %>
 	<li class="datetime input optional"><label>Starts at</label><span class="date"><%= f.datetime_select(:starts_at, :order => [:day, :month, :year]) %></span>
 	<li class="datetime input optional"><label>Cutoff at</label><span class="date"><%= f.datetime_select(:cutoff_at, :order => [:day, :month, :year]) %></span>
+    <%= f.input :previous, collection: Round.all %>
   <% end %>
 
   <%= f.actions do %>

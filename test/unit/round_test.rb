@@ -16,5 +16,6 @@ end
 #  created_at       :datetime        not null
 #  updated_at       :datetime        not null
 #  shares_remaining :integer(4)      default(0)
+#  prev_round_id    :integer(4)      default(0)
 #
 

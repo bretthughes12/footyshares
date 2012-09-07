@@ -11,4 +11,7 @@
 	<td> 
 		<%= team.total_shares  %>
 	</td>
+	<td> 
+		<%= number_to_percentage(team.share_percentage, precision: 2)  %>
+	</td>
 </tr>

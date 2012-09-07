@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907101208) do
+ActiveRecord::Schema.define(:version => 20120907113858) do
 
   create_table "matches", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120907101208) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.integer  "shares_remaining", :default => 0
+    t.integer  "prev_round_id"
   end
 
   create_table "shares", :force => true do |t|
