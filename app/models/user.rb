@@ -81,6 +81,22 @@ class User < ActiveRecord::Base
     User.sum(&:shares_remaining)
   end
   
+  def self.reset_shares_remaining
+    User.update_all(shares_remaining: 0)
+  end
+  
+  def self.update_shares_remaining
+    Round.current.matches.each do |match|
+      match.teams.winners.each do |team|
+        team.shares.each do |share|
+          user = share.user
+          user.shares_remaining += share.shares
+          user.save
+        end
+      end
+    end
+  end
+  
   private
 
   def self.encrypted_password(password, salt)

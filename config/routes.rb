@@ -17,7 +17,11 @@ Footyshares::Application.routes.draw do
     end
   end
   resources :users 
-  resources :rounds
+  resources :rounds do
+    collection do
+      post :update_shares
+    end
+  end
   resources :matches
   resources :teams
 

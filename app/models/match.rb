@@ -3,6 +3,11 @@ class Match < ActiveRecord::Base
   
   belongs_to :round
   has_many :teams
+  
+  def mark_as_complete
+    self.completed = true
+    self.save
+  end
 end
 # == Schema Information
 #

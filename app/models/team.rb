@@ -4,6 +4,8 @@ class Team < ActiveRecord::Base
   belongs_to :match
   has_many :shares
   
+  scope :winners, where(winner: true)
+  
   def total_shares
     shares.sum(&:shares)
   end

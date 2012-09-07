@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824030548) do
+ActiveRecord::Schema.define(:version => 20120907101208) do
 
   create_table "matches", :force => true do |t|
     t.string   "name"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(:version => 20120824030548) do
     t.string   "name"
     t.datetime "cutoff_at"
     t.datetime "starts_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "shares_remaining", :default => 0
   end
 
   create_table "shares", :force => true do |t|
