@@ -25,7 +25,7 @@ class TeamsControllerTest < ActionController::TestCase
                     {user_id: @admin_user.id}
     end
 
-    assert_redirected_to team_path(assigns(:team))
+    assert_redirected_to teams_path
   end
 
   test "should show team" do
@@ -45,7 +45,7 @@ class TeamsControllerTest < ActionController::TestCase
                          name: @team.name, 
                          winner: @team.winner }},
                  {user_id: @admin_user.id}
-    assert_redirected_to team_path(assigns(:team))
+    assert_redirected_to teams_path
   end
 
   test "should destroy team" do
