@@ -21,7 +21,7 @@ class Round < ActiveRecord::Base
     if self.prev_round_id.nil?
       User.total_shares_invested
     else
-      r = self.previous
+      r = Round.find(prev_round_id)
       r.shares_remaining
     end
   end

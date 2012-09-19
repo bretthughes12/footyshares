@@ -44,4 +44,14 @@ class SharesController < InheritedResources::Base
       end
     end
   end
+
+private
+  
+  def collection
+    @shares = Round.current.matches.collect do |match|
+      match.teams.collect do |team|
+        team.shares
+      end
+    end.flatten
+  end
 end

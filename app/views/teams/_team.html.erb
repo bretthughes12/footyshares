@@ -1,7 +1,7 @@
 <tr>
     <td><%= team.match.name if team.match %></td>
     <td><%= team.name %></td>
-    <td class=<%= team.winner ? "winner" : "" %>>
+    <td>
 		<%= check_box_tag 'team[winner]', "1", team.winner, 
 		     { 'data-href' => team_path(:id => team.id),
 		       'data-spinner-id' => "#spinner-#{team.id}",	 
