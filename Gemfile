@@ -56,6 +56,8 @@ group :development, :test do
   gem 'foreman'
   gem 'factory_girl_rails'
   gem 'therubyracer'
+  gem 'taps', :require => false # has an sqlite dependency, which heroku hates
+  gem 'sqlite3'
 end
 
 group :development do
