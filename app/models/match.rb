@@ -1,13 +1,8 @@
 class Match < ActiveRecord::Base
-  attr_accessible :allow_only_one_team, :name, :round_id, :venue, :completed
+  attr_accessible :allow_only_one_team, :name, :round_id, :venue
   
   belongs_to :round
   has_many :teams
-  
-  def mark_as_complete
-    self.completed = true
-    self.save
-  end
 end
 # == Schema Information
 #
@@ -20,6 +15,5 @@ end
 #  allow_only_one_team :boolean(1)      default(FALSE), not null
 #  created_at          :datetime        not null
 #  updated_at          :datetime        not null
-#  completed           :boolean(1)      default(FALSE)
 #
 

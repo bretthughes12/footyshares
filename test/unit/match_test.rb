@@ -16,6 +16,5 @@ end
 #  allow_only_one_team :boolean(1)      default(FALSE), not null
 #  created_at          :datetime        not null
 #  updated_at          :datetime        not null
-#  completed           :boolean(1)      default(FALSE)
 #
 

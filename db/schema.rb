@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907113858) do
+ActiveRecord::Schema.define(:version => 20121003105231) do
 
   create_table "matches", :force => true do |t|
     t.string   "name"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20120907113858) do
     t.boolean  "allow_only_one_team", :default => false, :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.boolean  "completed",           :default => false
   end
 
   create_table "rounds", :force => true do |t|
