@@ -11,7 +11,7 @@ class SignupsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create signup" do
+  test "should allow signup" do
     assert_difference('User.count') do
       post :create, signup: { email: @user.email, 
                               name: "Bruce", 
@@ -25,4 +25,36 @@ class SignupsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
+  test "should not allow signup if user invalid" do
+    assert_no_difference('User.count') do
+      post :create, signup: { email: "invalid", 
+                              name: "Bruce", 
+                              nickname: "bruce", 
+                              starting_shares: @user.starting_shares, 
+                              login: "bruce",
+                              password: "secret",
+                              password_confirmation: "secret" }
+    end
+
+    assert_response :success
+    assert_template :new
+  end
+
+  test "should not allow signup if competition has already started" do
+    Round.delete_all
+    @round = FactoryGirl.create(:round, cutoff_at: 5.minutes.ago)
+ 
+    assert_no_difference('User.count') do
+      post :create, signup: { email: @user.email, 
+                              name: "Bruce", 
+                              nickname: "bruce", 
+                              starting_shares: @user.starting_shares, 
+                              login: "bruce",
+                              password: "secret",
+                              password_confirmation: "secret" }
+    end
+
+    assert_response :success
+    assert_template :new
+  end
 end

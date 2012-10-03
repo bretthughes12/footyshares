@@ -56,4 +56,20 @@ class RoundsControllerTest < ActionController::TestCase
 
     assert_redirected_to rounds_path
   end
+
+  test "should update users and round when shares updated" do
+    Round.delete_all
+    @round = FactoryGirl.create(:round, shares_remaining: 100)
+
+    post :update_shares, {},
+                         {user_id: @admin_user.id}
+
+    user = User.find(@admin_user)
+    assert_equal 0, user.shares_remaining
+    
+    round = Round.find(@round)
+    assert_equal 0, round.shares_remaining
+
+    assert_redirected_to teams_path
+  end
 end

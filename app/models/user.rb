@@ -70,15 +70,19 @@ class User < ActiveRecord::Base
   end
   
   def self.current_shareprice
-    (total_shares_invested * STARTING_SHARE_PRICE_IN_CENTS).to_f / total_shares_remaining
+    if total_shares_remaining > 0 
+      (total_shares_invested * STARTING_SHARE_PRICE_IN_CENTS).to_f / total_shares_remaining
+    else
+      0
+    end
   end
   
   def self.total_shares_invested
-    User.sum(&:starting_shares)
+    @total_shares_invested ||= User.sum(&:starting_shares)
   end
   
   def self.total_shares_remaining
-    User.sum(&:shares_remaining)
+    @total_shares_remaining ||= User.sum(&:shares_remaining)
   end
   
   def self.reset_shares_remaining

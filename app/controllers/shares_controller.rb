@@ -2,6 +2,7 @@ class SharesController < InheritedResources::Base
  
   load_and_authorize_resource
 
+  # GET shares/invest
   def invest
     @round = Round.current
     @shares = Share.prepare_for_user_and_round(current_user, @round)
