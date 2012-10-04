@@ -78,11 +78,11 @@ class User < ActiveRecord::Base
   end
   
   def self.total_shares_invested
-    @total_shares_invested ||= User.sum(&:starting_shares)
+    User.sum(&:starting_shares)
   end
   
   def self.total_shares_remaining
-    @total_shares_remaining ||= User.sum(&:shares_remaining)
+    User.sum(&:shares_remaining)
   end
   
   def self.reset_shares_remaining

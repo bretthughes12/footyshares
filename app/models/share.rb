@@ -48,6 +48,7 @@ class Share < ActiveRecord::Base
   
   def self.store(user_id, team_id, shares)
     share = Share.find_by_user_id_and_team_id(user_id, team_id) || Share.new(user_id: user_id, team_id: team_id)
+    shares = 0 if shares.blank?
     
     share.shares = shares
     

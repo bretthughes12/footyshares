@@ -5,5 +5,6 @@ FactoryGirl.define do
     name "MyString"
     cutoff_at "2013-08-17"
     starts_at "2012-08-17"
+    prev_round_id nil
   end
 end

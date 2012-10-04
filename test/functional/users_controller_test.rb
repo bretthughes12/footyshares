@@ -43,6 +43,20 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should not allow editing another user" do
+    get :edit, {id: @admin_user},
+               {user_id: @user.id}
+    assert_match "not authorised", flash[:notice]
+    assert_redirected_to root_path
+  end
+
+  test "should not allow editing user if not logged on" do
+    get :edit, {id: @admin_user},
+               {}
+    assert_match "must log in", flash[:notice]
+    assert_redirected_to login_path
+  end
+
   test "should update user" do
     put :update, {id: @user, 
                   user: { email: @user.email, 

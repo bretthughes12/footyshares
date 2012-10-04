@@ -111,7 +111,7 @@ class SharesControllerTest < ActionController::TestCase
     share = FactoryGirl.create(:share, team: team, user: user, shares: 0)
     other_share = FactoryGirl.create(:share, team: other_team, user: user, shares: 100)
     
-    put :update_multiple, {shares: {@share.id => { shares: nil, 
+    put :update_multiple, {shares: {@share.id => { shares: "a", 
                                                    team_id: share.team_id, 
                                                    user_id: share.user_id },
                                     other_share.id => { shares: other_share.shares, 

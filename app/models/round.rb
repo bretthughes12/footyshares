@@ -8,7 +8,6 @@ class Round < ActiveRecord::Base
     cutoff_at > Time.now
   end
   
-  # Once results for previous round are calculated, the next round becomes the current round
   def self.current
     Round.where('starts_at < now()').order('starts_at DESC').first
   end
