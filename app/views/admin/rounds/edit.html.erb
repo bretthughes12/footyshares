@@ -1,0 +1,8 @@
+<% title "Editing round" %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= render :partial => 'form', locals: {url: admin_round_url(:id => @round), method: :put} %>
+
+<%= link_to 'Show', admin_round_url(@round) %> |
+<%= link_to 'Back', admin_rounds_path %>

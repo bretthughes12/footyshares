@@ -1,0 +1,7 @@
+<% title "New team" %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= render :partial => 'form', locals: {url: admin_teams_url, method: :post} %>
+
+<%= link_to 'Back', admin_teams_path %>

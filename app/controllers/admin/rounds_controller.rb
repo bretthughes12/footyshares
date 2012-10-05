@@ -1,6 +1,16 @@
-class RoundsController < InheritedResources::Base
+class Admin::RoundsController < InheritedResources::Base
  
   load_and_authorize_resource
+
+  # PUT /rounds/1
+  def update
+    update! { admin_rounds_url }
+  end
+
+  # POST /rounds/1
+  def create
+    create! { admin_rounds_url }
+  end
 
   # POST /rounds/update_shares
   # 
@@ -22,7 +32,7 @@ class RoundsController < InheritedResources::Base
       format.html do
         shareprice = (User.current_shareprice * 100).to_i.to_d / 100
         flash[:notice] = "Updated. The new shareprice is #{shareprice} cents"
-        redirect_to teams_path
+        redirect_to admin_teams_path
       end
     end
   end

@@ -1,4 +1,4 @@
-<% title "Listing matches" %>
+<% title "Listing rounds" %>
 
 <h1><%= yield(:title) %></h1>
 
@@ -7,18 +7,15 @@
 	<col class="data" />
 	<col class="data" />
 	<col class="data" />
-	<col class="data" />
 	<tr>
-	    <th>Round</th>
 	    <th>Name</th>
-		<th>Venue</th>
-		<th>Allow only one team</th>
+	    <th>Starts at</th>
+	    <th>Cutoff at</th>
 	    <th>Actions</th>
   	</tr>
 
-	<%= render @matches %>
+	<%= render @rounds %>
 </table>
 
 <br />
-
-<%= link_to 'New Match', new_match_path if can? :create, Match %>
+<%= link_to 'New Round', new_admin_round_path if can? :create, Round %>

@@ -1,0 +1,8 @@
+<% title "Editing team" %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= render :partial => 'form', locals: {url: admin_team_url(:id => @team), method: :put} %>
+
+<%= link_to 'Show', admin_team_url(@team) %> |
+<%= link_to 'Back', admin_teams_path %>

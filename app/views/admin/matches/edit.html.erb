@@ -1,0 +1,8 @@
+<% title "Editing match" %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= render :partial => 'form', locals: {url: admin_match_url(:id => @match), method: :put} %>
+
+<%= link_to 'Show', admin_match_path(@match) %> |
+<%= link_to 'Back', admin_matches_path %>

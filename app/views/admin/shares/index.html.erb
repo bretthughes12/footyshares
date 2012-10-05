@@ -1,0 +1,23 @@
+<% title "Listing shares" %>
+
+<h1><%= yield(:title) %></h1>
+
+<table class="file-table">
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+	<col class="data" />
+	<tr>
+	    <th>Round</th>
+	    <th>Team</th>
+	    <th>User</th>
+	    <th>Shares</th>
+	    <th>Actions</th>
+  	</tr>
+
+	<%= render @shares %>
+</table>
+
+<br />
+<%= link_to 'New Share', new_admin_share_path if can? :create, Share %>

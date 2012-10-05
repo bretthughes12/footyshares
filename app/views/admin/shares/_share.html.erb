@@ -1,0 +1,13 @@
+<tr>
+    <td><%= share.round_name %></td>
+    <td><%= share.team_name %></td>
+    <td><%= share.user.display_name if share.user %></td>
+    <td><%= share.shares %></td>
+	<td class="list-actions">
+		<%= link_to 'Show', admin_share_path(share) %>
+	    <%= link_to 'Edit', edit_admin_share_path(share) if can? :update, share %>
+		<%= link_to 'Destroy', admin_share_path(share), 
+							   method: :delete, 
+							   data: { confirm: 'Are you sure?' } if can? :destroy, share %>
+	</td>
+</tr>

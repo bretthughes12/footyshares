@@ -2,7 +2,7 @@
 
 <h1><%= yield(:title) %></h1>
 
-<%= button_to 'Update Shares', update_shares_rounds_path %>
+<%= button_to 'Update Shares', update_shares_admin_rounds_path %>
 
 <br />
 
@@ -22,4 +22,4 @@
 </table>
 
 <br />
-<%= link_to 'New Team', new_team_path if can? :create, Team %>
+<%= link_to 'New Team', new_admin_team_path if can? :create, Team %>

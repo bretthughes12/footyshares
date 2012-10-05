@@ -3,15 +3,17 @@
     <td><%= team.name %></td>
     <td>
 		<%= check_box_tag 'team[winner]', "1", team.winner, 
-		     { 'data-href' => team_path(:id => team.id),
+		     { 'data-href' => admin_team_path(:id => team.id),
 		       'data-spinner-id' => "#spinner-#{team.id}",	 
 			   :class => "updateable-checkbox" } %>
 		<%= image_tag 'spinner.gif', :id => "spinner-#{team.id}",
 			:style => 'display: none' %>
 	</td>
 	<td class="list-actions">
-		<%= link_to 'Show', team %>
-	    <%= link_to 'Edit', edit_team_path(team) if can? :update, team %>
-		<%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, team %>
+		<%= link_to 'Show', admin_team_path(team) %>
+	    <%= link_to 'Edit', edit_admin_team_path(team) if can? :update, team %>
+		<%= link_to 'Destroy', admin_team_path(team), 
+							   method: :delete, 
+							   data: { confirm: 'Are you sure?' } if can? :destroy, team %>
 	</td>
 </tr>

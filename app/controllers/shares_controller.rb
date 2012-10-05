@@ -1,4 +1,4 @@
-class SharesController < InheritedResources::Base
+class SharesController < ApplicationController
  
   load_and_authorize_resource
 
@@ -52,14 +52,6 @@ class SharesController < InheritedResources::Base
   end
 
 private
-  
-  def collection
-    @shares = Round.current.matches.collect do |match|
-      match.teams.collect do |team|
-        team.shares
-      end
-    end.flatten
-  end
   
   # Returns true if any error is detected for the number of teams invested
   # against in matches where only one team must be selected

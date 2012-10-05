@@ -1,4 +1,4 @@
-class TeamsController < InheritedResources::Base
+class Admin::TeamsController < InheritedResources::Base
  
   load_and_authorize_resource
 
@@ -7,19 +7,13 @@ class TeamsController < InheritedResources::Base
   # PUT /users/1
   def update
     update! do |format|
-      format.html { redirect_to teams_url }
+      format.html { redirect_to admin_teams_url }
       format.json { render nil }
     end
   end
 
   # POST /users/1
   def create
-    create! { teams_url }
+    create! { admin_teams_url }
   end
-
-  # DELETE /users/1
-  def destroy
-    destroy! { teams_url }
-  end
-  
 end

@@ -3,8 +3,10 @@
 	<td><%= round.starts_at.in_time_zone.strftime("%d/%m/%Y %I:%M %p") unless round.starts_at.blank? %></td>
 	<td><%= round.cutoff_at.in_time_zone.strftime("%d/%m/%Y %I:%M %p") unless round.cutoff_at.blank? %></td>
 	<td class="list-actions">
-		<%= link_to 'Show', round %>
-	    <%= link_to 'Edit', edit_round_path(round) if can? :update, round %>
-		<%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, round %>
+		<%= link_to 'Show', admin_round_path(round) %>
+	    <%= link_to 'Edit', edit_admin_round_path(round) if can? :update, round %>
+		<%= link_to 'Destroy', admin_round_path(round), 
+							   method: :delete, 
+							   data: { confirm: 'Are you sure?' } if can? :destroy, round %>
 	</td>
 </tr>

@@ -12,7 +12,7 @@ class Ability
 
       else
         can :read, :all
-        can :manage, Share, :user_id => user.id
+        can [:invest, :update_multiple], Share
         can :create, Share
         can :update, User, :id => user.id
     end

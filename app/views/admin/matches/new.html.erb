@@ -1,0 +1,7 @@
+<% title "New match" %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= render :partial => 'form', locals: {url: admin_matches_url, method: :post} %>
+
+<%= link_to 'Back', admin_matches_path %>

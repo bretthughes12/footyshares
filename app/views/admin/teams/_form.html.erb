@@ -1,4 +1,4 @@
-<%= semantic_form_for @team do |f| %>
+<%= semantic_form_for(@team, :url => url, :html => { :method => method }) do |f| %>
   <%= f.inputs do %>
     <%= f.input :match, collection: Match.all %>
     <%= f.input :name %>

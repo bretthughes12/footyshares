@@ -1,0 +1,22 @@
+<% title "Shares for #{@share.user.name}" %>
+
+<h1><%= yield(:title) %></h1>
+
+<p>
+  <b>Team:</b>
+  <%= @share.team_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @share.user_id %>
+</p>
+
+<p>
+  <b>Shares:</b>
+  <%= @share.shares %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_share_path(@share) %> |
+<%= link_to 'Back', admin_shares_path %>

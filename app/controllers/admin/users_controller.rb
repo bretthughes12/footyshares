@@ -12,11 +12,6 @@ class Admin::UsersController < InheritedResources::Base
     create! { admin_users_url }
   end
 
-  # DELETE /users/1
-  def destroy
-    destroy! { admin_users_url }
-  end
-
   # PUT /users/1/paid
   def paid
     @user.mark_as_paid

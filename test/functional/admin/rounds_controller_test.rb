@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RoundsControllerTest < ActionController::TestCase
+class Admin::RoundsControllerTest < ActionController::TestCase
   setup do
     @round = FactoryGirl.create(:round)
     @admin_user = FactoryGirl.create(:user, :admin)
@@ -25,7 +25,7 @@ class RoundsControllerTest < ActionController::TestCase
                     {user_id: @admin_user.id}
     end
 
-    assert_redirected_to round_path(assigns(:round))
+    assert_redirected_to admin_rounds_path
   end
 
   test "should show round" do
@@ -45,7 +45,7 @@ class RoundsControllerTest < ActionController::TestCase
                            name: @round.name, 
                            starts_at: @round.starts_at }},
                  {user_id: @admin_user.id}
-    assert_redirected_to round_path(assigns(:round))
+    assert_redirected_to admin_rounds_path
   end
 
   test "should destroy round" do
@@ -54,7 +54,7 @@ class RoundsControllerTest < ActionController::TestCase
                        {user_id: @admin_user.id}
     end
 
-    assert_redirected_to rounds_path
+    assert_redirected_to admin_rounds_path
   end
 
   test "should update users and round when shares updated" do
@@ -70,6 +70,6 @@ class RoundsControllerTest < ActionController::TestCase
     round = Round.find(@round)
     assert_equal 0, round.shares_remaining
 
-    assert_redirected_to teams_path
+    assert_redirected_to admin_teams_path
   end
 end

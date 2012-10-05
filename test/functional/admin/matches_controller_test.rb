@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MatchesControllerTest < ActionController::TestCase
+class Admin::MatchesControllerTest < ActionController::TestCase
   setup do
     @match = FactoryGirl.create(:match)
     @admin_user = FactoryGirl.create(:user, :admin)
@@ -26,7 +26,7 @@ class MatchesControllerTest < ActionController::TestCase
                     {user_id: @admin_user.id}
     end
 
-    assert_redirected_to match_path(assigns(:match))
+    assert_redirected_to admin_matches_path
   end
 
   test "should show match" do
@@ -47,7 +47,7 @@ class MatchesControllerTest < ActionController::TestCase
                            round_id: @match.round_id, 
                            venue: @match.venue }},
                  {user_id: @admin_user.id}
-    assert_redirected_to match_path(assigns(:match))
+    assert_redirected_to admin_matches_path
   end
 
   test "should destroy match" do
@@ -56,6 +56,6 @@ class MatchesControllerTest < ActionController::TestCase
                        {user_id: @admin_user.id}
     end
 
-    assert_redirected_to matches_path
+    assert_redirected_to admin_matches_path
   end
 end

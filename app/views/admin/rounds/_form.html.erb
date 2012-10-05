@@ -1,4 +1,4 @@
-<%= semantic_form_for @round do |f| %>
+<%= semantic_form_for(@round, :url => url, :html => { :method => method }) do |f| %>
   <%= f.inputs do %>
     <%= f.input :name %>
 	<li class="datetime input optional"><label>Starts at</label><span class="date"><%= f.datetime_select(:starts_at, :order => [:day, :month, :year]) %></span>

@@ -1,0 +1,7 @@
+<% title "New round" %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= render :partial => 'form', locals: {url: admin_rounds_url, method: :post} %>
+
+<%= link_to 'Back', admin_rounds_path %>

@@ -1,0 +1,11 @@
+<%= semantic_form_for(@share, :url => url, :html => { :method => method }) do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :team, collection: Round.current.teams %>
+    <%= f.input :user, collection: User.all %>
+    <%= f.input :shares %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

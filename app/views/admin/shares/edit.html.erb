@@ -1,0 +1,8 @@
+<% title "Editing share" %>
+
+<h1><%= yield(:title) %></h1>
+
+<%= render :partial => 'form', locals: {url: admin_share_url(:id => @share), method: :put} %>
+
+<%= link_to 'Show', admin_share_path(@share) %> |
+<%= link_to 'Back', admin_shares_path %>
