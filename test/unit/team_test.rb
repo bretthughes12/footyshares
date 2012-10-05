@@ -20,8 +20,9 @@ class TeamTest < ActiveSupport::TestCase
     team = FactoryGirl.create(:team)
     share1 = FactoryGirl.create(:share, team: team, user: user, shares: 50)
     share2 = FactoryGirl.create(:share, team: team, user: user, shares: 50)
+    calculated_percentage = (team.total_shares * 100).to_f / User.total_shares_invested
     
-    assert_equal (team.total_shares * 100).to_f / User.total_shares_invested, team.share_percentage
+    assert_equal calculated_percentage, team.share_percentage
   end
 
   test "share percentage should be zero if nobody selected the team" do
