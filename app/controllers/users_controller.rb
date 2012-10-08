@@ -6,7 +6,7 @@ class UsersController < InheritedResources::Base
   # PUT /users/1
   def update
 #    update! { root_url }
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(permitted_params.user)
       redirect_to root_url, notice: "Your profile has been updated"
     else
       render :edit
@@ -17,9 +17,5 @@ private
   
   def collection
     @users = User.all.sort
-  end
-
-  def user_params
-    params.require(:user).permit(:email, :name, :nickname, :login)
   end
 end

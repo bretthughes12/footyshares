@@ -33,6 +33,23 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_redirected_to admin_users_url
   end
 
+  test "should not create user when invalid" do
+    assert_no_difference('User.count') do
+      post :create, {user: { email: "bademail", 
+                             name: "Fred", 
+                             nickname: "fred", 
+                             shares_remaining: @user.shares_remaining, 
+                             login: "fred",
+                             password: "secret",
+                             password_confirmation: "secret",
+                             starting_shares: 100 }}, 
+                    {user_id: @admin_user.id}
+    end
+
+    assert_response :success
+    assert_template :new
+  end
+
   test "should show user" do
     get :show, id: @user
     assert_response :success
@@ -53,6 +70,18 @@ class Admin::UsersControllerTest < ActionController::TestCase
                           login: @user.login }},
                  {user_id: @admin_user.id}
     assert_redirected_to admin_users_url
+  end
+
+  test "should not update user when invalid" do
+    put :update, {id: @user, 
+                  user: { email: "bademail", 
+                          name: @user.name, 
+                          nickname: @user.nickname, 
+                          shares_remaining: @user.shares_remaining, 
+                          login: @user.login }},
+                 {user_id: @admin_user.id}
+    assert_response :success
+    assert_template :edit
   end
 
   test "should mark user as paid" do

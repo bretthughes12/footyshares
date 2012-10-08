@@ -1,15 +1,14 @@
 class SignupsController < ApplicationController
   def new
-    @round = Round.current
+    @round = Round.order(:id).first
     @user = User.new
   end
 
   def create
-#    @round = Round.current
     @round = Round.order(:id).first
 
     if @round.open
-      @user = User.new(user_params)
+      @user = User.new(permitted_params.signup)
   
       respond_to do |format|
         if @user.save
@@ -29,13 +28,5 @@ class SignupsController < ApplicationController
       flash[:notice] = 'The competition has already started. New signups are now closed.'
       render action: :new
     end  
-  end
-  
-private
-
-  def user_params
-    params.require(:signup).permit(:email, :name, :nickname, :login, 
-                                   :password, :password_confirmation, 
-                                   :starting_shares )
   end
 end

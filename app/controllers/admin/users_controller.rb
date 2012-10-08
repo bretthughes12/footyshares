@@ -6,7 +6,7 @@ class Admin::UsersController < InheritedResources::Base
   # PUT /users/1
   def update
 #    update! { admin_users_url }
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(permitted_params.user)
       redirect_to admin_users_url, notice: "User updated"
     else
       render :edit
@@ -16,7 +16,7 @@ class Admin::UsersController < InheritedResources::Base
   # POST /users/1
   def create
 #    create! { admin_users_url }
-    @user = User.new(user_params)
+    @user = User.new(permitted_params.user)
     if @user.save
       redirect_to admin_users_url, notice: "Created user"
     else
@@ -38,11 +38,5 @@ private
   
   def collection
     @users = User.all.sort
-  end
-
-  def user_params
-    params.require(:user).permit(:email, :name, :nickname, :login,
-                                 :starting_shares, :shares_remaining,
-                                 :password, :password_confirmation)
   end
 end

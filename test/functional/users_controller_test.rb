@@ -42,10 +42,20 @@ class UsersControllerTest < ActionController::TestCase
                   user: { email: @user.email, 
                           name: @user.name, 
                           nickname: @user.nickname, 
-                          shares_remaining: @user.shares_remaining, 
                           login: @user.login }},
-                 {user_id: @admin_user.id}
+                 {user_id: @user.id}
     assert_redirected_to root_path
+  end
+
+  test "should not update user when invalid" do
+    put :update, {id: @user, 
+                  user: { email: "bademail", 
+                          name: @user.name, 
+                          nickname: @user.nickname, 
+                          login: @user.login }},
+                 {user_id: @user.id}
+    assert_response :success
+    assert_template :edit
   end
 
   test "should destroy user" do
