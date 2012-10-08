@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   include Comparable
-  
-  attr_accessible :admin, :email, :name, :nickname, :shares_remaining, 
-                  :login, :starting_shares, :shares_remaining
+  include ActiveModel::ForbiddenAttributesProtection
+    
+#  attr_accessible :admin, :email, :name, :nickname, :shares_remaining, 
+#                  :login, :starting_shares, :shares_remaining
 
   has_many :shares
   

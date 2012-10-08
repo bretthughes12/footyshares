@@ -12,26 +12,6 @@ class UsersControllerTest < ActionController::TestCase
     assert_not_nil assigns(:users)
   end
 
-  test "should get new" do
-    get :new, {}, {user_id: @admin_user.id}
-    assert_response :success
-  end
-
-  test "should create user" do
-    assert_difference('User.count') do
-      post :create, user: { email: @user.email, 
-                            name: "Fred", 
-                            nickname: "fred", 
-                            shares_remaining: @user.shares_remaining, 
-                            login: "fred",
-                            password: "secret",
-                            password_confirmation: "secret",
-                            starting_shares: 100 }
-    end
-
-    assert_redirected_to root_path
-  end
-
   test "should show user" do
     get :show, id: @user
     assert_response :success

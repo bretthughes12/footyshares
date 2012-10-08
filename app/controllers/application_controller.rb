@@ -10,9 +10,11 @@ class ApplicationController < ActionController::Base
     Ability.new(current_user)
   end
 
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::AccessDenied, ActiveModel::ForbiddenAttributes do |exception|
+    puts "got here first"
     case
       when @current_user.nil?
+        puts "got here"
         flash[:notice] = "You must log in to do that"
         redirect_to login_url
 

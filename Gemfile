@@ -44,11 +44,11 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 
-gem 'will_paginate'
 gem 'formtastic'
 gem 'cancan'
 gem 'inherited_resources'
 gem 'exception_notification', :require => 'exception_notifier'
+gem 'strong_parameters'
 
 group :development, :test do
   gem 'mysql2'

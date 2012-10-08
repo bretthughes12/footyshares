@@ -8,7 +8,7 @@ class SignupsController < ApplicationController
     @round = Round.current
 
     if @round.open
-      @user = User.new(params[:signup])
+      @user = User.new(user_params)
   
       respond_to do |format|
         if @user.save
@@ -19,12 +19,22 @@ class SignupsController < ApplicationController
             redirect_to root_url
           end
         else
-          format.html { render action: :new }
+          format.html do
+            render action: :new 
+          end
         end
       end
     else
       flash[:notice] = 'The competition has already started. New signups are now closed.'
       render action: :new
     end  
+  end
+  
+private
+
+  def user_params
+    params.require(:signup).permit(:email, :name, :nickname, :login, 
+                                   :password, :password_confirmation, 
+                                   :starting_shares )
   end
 end

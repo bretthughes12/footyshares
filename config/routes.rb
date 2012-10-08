@@ -9,8 +9,7 @@ Footyshares::Application.routes.draw do
 
   resource :sessions, only: [:new, :create, :destroy]
   resource :signups, only: :create
-
-  resources :users 
+  resources :users, except: [:new, :create]
 
   namespace :admin do
     resources :users do
