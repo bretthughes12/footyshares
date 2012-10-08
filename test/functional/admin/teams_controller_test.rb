@@ -7,7 +7,7 @@ class Admin::TeamsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, {}, {user_id: @admin_user.id}
     assert_response :success
     assert_not_nil assigns(:teams)
   end
@@ -29,7 +29,8 @@ class Admin::TeamsControllerTest < ActionController::TestCase
   end
 
   test "should show team" do
-    get :show, id: @team
+    get :show, {id: @team}, 
+               {user_id: @admin_user.id}
     assert_response :success
   end
 

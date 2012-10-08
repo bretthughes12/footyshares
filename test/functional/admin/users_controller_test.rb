@@ -19,14 +19,15 @@ class Admin::UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: { email: @user.email, 
-                            name: "Fred", 
-                            nickname: "fred", 
-                            shares_remaining: @user.shares_remaining, 
-                            login: "fred",
-                            password: "secret",
-                            password_confirmation: "secret",
-                            starting_shares: 100 }
+      post :create, {user: { email: @user.email, 
+                             name: "Fred", 
+                             nickname: "fred", 
+                             shares_remaining: @user.shares_remaining, 
+                             login: "fred",
+                             password: "secret",
+                             password_confirmation: "secret",
+                             starting_shares: 100 }}, 
+                    {user_id: @admin_user.id}
     end
 
     assert_redirected_to admin_users_url

@@ -5,7 +5,8 @@ class SignupsController < ApplicationController
   end
 
   def create
-    @round = Round.current
+#    @round = Round.current
+    @round = Round.order(:id).first
 
     if @round.open
       @user = User.new(user_params)

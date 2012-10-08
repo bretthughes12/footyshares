@@ -2,9 +2,6 @@ class User < ActiveRecord::Base
   include Comparable
   include ActiveModel::ForbiddenAttributesProtection
     
-#  attr_accessible :admin, :email, :name, :nickname, :shares_remaining, 
-#                  :login, :starting_shares, :shares_remaining
-
   has_many :shares
   
   validates :login,           presence: true, 

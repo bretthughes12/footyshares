@@ -7,7 +7,7 @@ class Admin::SharesControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, {}, {user_id: @admin_user.id}
     assert_response :success
     assert_not_nil assigns(:shares)
   end
@@ -29,7 +29,8 @@ class Admin::SharesControllerTest < ActionController::TestCase
   end
 
   test "should show share" do
-    get :show, id: @share
+    get :show, {id: @share}, 
+               {user_id: @admin_user.id}
     assert_response :success
   end
 

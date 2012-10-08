@@ -7,7 +7,7 @@ class Admin::MatchesControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, {}, {user_id: @admin_user.id}
     assert_response :success
     assert_not_nil assigns(:matches)
   end
@@ -30,7 +30,8 @@ class Admin::MatchesControllerTest < ActionController::TestCase
   end
 
   test "should show match" do
-    get :show, id: @match
+    get :show, {id: @match}, 
+               {user_id: @admin_user.id}
     assert_response :success
   end
 

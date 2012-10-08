@@ -4,16 +4,14 @@ class Ability
   def initialize(user)
     case
       when user.nil?
-        can :read, :all
-        can :create, User
+        can :read, User
 
       when user.admin?
         can :manage, :all
 
       else
-        can :read, :all
         can [:invest, :update_multiple], Share
-        can :create, Share
+        can :read, User
         can :update, User, :id => user.id
     end
   end  

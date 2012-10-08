@@ -7,7 +7,7 @@ class Admin::RoundsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, {}, {user_id: @admin_user.id}
     assert_response :success
     assert_not_nil assigns(:rounds)
   end
@@ -29,7 +29,8 @@ class Admin::RoundsControllerTest < ActionController::TestCase
   end
 
   test "should show round" do
-    get :show, id: @round
+    get :show, {id: @round}, 
+               {user_id: @admin_user.id}
     assert_response :success
   end
 
