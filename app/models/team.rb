@@ -1,11 +1,11 @@
 class Team < ActiveRecord::Base
-  attr_accessible :match_id, :name, :winner
-  
   belongs_to :match
   has_many :shares
   
   scope :winners, where(winner: true)
   
+  validates :name,            length: { maximum: 255 }
+
   def total_shares
     shares.sum(&:shares)
   end

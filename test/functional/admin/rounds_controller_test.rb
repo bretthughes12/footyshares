@@ -28,6 +28,18 @@ class Admin::RoundsControllerTest < ActionController::TestCase
     assert_redirected_to admin_rounds_path
   end
 
+  test "should not create round when invalid" do
+    assert_no_difference('Round.count') do
+      post :create, {round: { cutoff_at: @round.cutoff_at, 
+                              name: "A"*300, 
+                              starts_at: @round.starts_at }},
+                    {user_id: @admin_user.id}
+    end
+
+    assert_response :success
+    assert_template :new
+  end
+
   test "should show round" do
     get :show, {id: @round}, 
                {user_id: @admin_user.id}
@@ -47,6 +59,16 @@ class Admin::RoundsControllerTest < ActionController::TestCase
                            starts_at: @round.starts_at }},
                  {user_id: @admin_user.id}
     assert_redirected_to admin_rounds_path
+  end
+
+  test "should not update round when invalid" do
+    put :update, {id: @round, 
+                  round: { cutoff_at: @round.cutoff_at, 
+                           name: "B"*300, 
+                           starts_at: @round.starts_at }},
+                 {user_id: @admin_user.id}
+    assert_response :success
+    assert_template :edit
   end
 
   test "should destroy round" do

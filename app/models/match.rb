@@ -1,8 +1,9 @@
 class Match < ActiveRecord::Base
-  attr_accessible :allow_only_one_team, :name, :round_id, :venue
-  
   belongs_to :round
   has_many :teams
+
+  validates :name,            length: { maximum: 255 }
+  validates :venue,           length: { maximum: 255 }
 end
 # == Schema Information
 #

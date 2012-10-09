@@ -1,15 +1,27 @@
 class Admin::RoundsController < InheritedResources::Base
  
   load_and_authorize_resource
+  skip_load_resource :only => :create
 
   # PUT /rounds/1
   def update
-    update! { admin_rounds_url }
+#    update! { admin_rounds_url }
+    if @round.update_attributes(permitted_params.round)
+      redirect_to admin_rounds_url, notice: "Round updated"
+    else
+      render :edit
+    end
   end
 
   # POST /rounds/1
   def create
-    create! { admin_rounds_url }
+#    create! { admin_rounds_url }
+    @round = Round.new(permitted_params.round)
+    if @round.save
+      redirect_to admin_rounds_url, notice: "Created round"
+    else
+      render :new
+    end
   end
 
   # POST /rounds/update_shares

@@ -28,6 +28,18 @@ class Admin::SharesControllerTest < ActionController::TestCase
     assert_redirected_to admin_shares_path
   end
 
+  test "should not create share when invalid" do
+    assert_no_difference('Share.count') do
+      post :create, {share: { shares: "a", 
+                              team_id: @share.team_id, 
+                              user_id: @share.user_id }},
+                    {user_id: @admin_user.id}
+    end
+
+    assert_response :success
+    assert_template :new
+  end
+
   test "should show share" do
     get :show, {id: @share}, 
                {user_id: @admin_user.id}
@@ -47,6 +59,16 @@ class Admin::SharesControllerTest < ActionController::TestCase
                            user_id: @share.user_id }},
                  {user_id: @admin_user.id}
     assert_redirected_to admin_shares_path
+  end
+
+  test "should not update share when invalid" do
+    put :update, {id: @share, 
+                  share: { shares: "b", 
+                           team_id: @share.team_id, 
+                           user_id: @share.user_id }},
+                 {user_id: @admin_user.id}
+    assert_response :success
+    assert_template :edit
   end
 
   test "should destroy share" do

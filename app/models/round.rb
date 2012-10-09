@@ -1,9 +1,9 @@
 class Round < ActiveRecord::Base
-  attr_accessible :cutoff_at, :name, :starts_at, :prev_round_id
-  
   has_many :matches
   has_one :previous, class_name: 'Round', foreign_key: 'prev_round_id'
   
+  validates :name,            length: { maximum: 255 }
+
   def open
     cutoff_at > Time.now
   end

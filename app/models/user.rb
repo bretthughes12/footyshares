@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   include Comparable
-  include ActiveModel::ForbiddenAttributesProtection
-    
+
   has_many :shares
   
   validates :login,           presence: true, 
