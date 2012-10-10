@@ -58,3 +58,9 @@ In the Grand Final you must invest your shares in ONE team only. Those who inves
 In each round of the competition, there can be a number of matches. Each match is between two teams.
 
 In each round, the user can allocate their shares to any of the teams playing in that round's matches.
+
+== Initialisation
+
+To reset the database for a new year:
+
+  rake db:reset
