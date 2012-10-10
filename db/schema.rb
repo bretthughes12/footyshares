@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003105231) do
+ActiveRecord::Schema.define(:version => 20121010100523) do
 
   create_table "matches", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20121003105231) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
+
+  add_index "matches", ["name"], :name => "index_matches_on_name"
+  add_index "matches", ["round_id"], :name => "index_matches_on_round_id"
 
   create_table "rounds", :force => true do |t|
     t.string   "name"
@@ -32,6 +35,9 @@ ActiveRecord::Schema.define(:version => 20121003105231) do
     t.integer  "prev_round_id"
   end
 
+  add_index "rounds", ["name"], :name => "index_rounds_on_name"
+  add_index "rounds", ["starts_at"], :name => "index_rounds_on_starts_at"
+
   create_table "shares", :force => true do |t|
     t.integer  "team_id"
     t.integer  "user_id"
@@ -40,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20121003105231) do
     t.datetime "updated_at",                :null => false
   end
 
+  add_index "shares", ["user_id", "team_id"], :name => "index_shares_on_user_id_and_team_id"
+
   create_table "teams", :force => true do |t|
     t.integer  "match_id"
     t.string   "name",                          :null => false
@@ -47,6 +55,9 @@ ActiveRecord::Schema.define(:version => 20121003105231) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
+
+  add_index "teams", ["match_id"], :name => "index_teams_on_match_id"
+  add_index "teams", ["name"], :name => "index_teams_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "login"
@@ -62,5 +73,7 @@ ActiveRecord::Schema.define(:version => 20121003105231) do
     t.integer  "starting_shares",  :default => 0
     t.boolean  "paid",             :default => false
   end
+
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
 end
