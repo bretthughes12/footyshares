@@ -12,11 +12,11 @@ Shares:         <%= @user.starting_shares %>
 
 Amount Payable: <%= number_to_currency(@user.amount_payable_in_dollars) %> 
 
-Payment to be made to Mike Goodwin, either with cash or by funds transfer:
+Payment to be made to <%= ENV['ACCOUNT_NAME'] %>, either with cash or by funds transfer:
 
-Michael Goodwin
+<%= ENV['ACCOUNT_NAME'] %>
 
-013006 / 353515448
+<%= ENV['ACCOUNT_BSB'] %> / <%= ENV['ACCOUNT_NUMBER'] %>
 
 In the case of funds transfer, please include the comment 'Finals shares' when making the transfer. Upon doing so, reply (all) to this email to advise Mike that you have paid.
 
