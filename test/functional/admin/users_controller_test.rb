@@ -26,7 +26,9 @@ class Admin::UsersControllerTest < ActionController::TestCase
                              login: "fred",
                              password: "secret",
                              password_confirmation: "secret",
-                             starting_shares: 100 }}, 
+                             starting_shares: 100,
+                             admin: false,
+                             paid: false }}, 
                     {user_id: @admin_user.id}
     end
 
@@ -67,7 +69,9 @@ class Admin::UsersControllerTest < ActionController::TestCase
                           name: @user.name, 
                           nickname: @user.nickname, 
                           shares_remaining: @user.shares_remaining, 
-                          login: @user.login }},
+                          login: @user.login,
+                          admin: false,
+                          paid: false }},
                  {user_id: @admin_user.id}
     assert_redirected_to admin_users_url
   end
@@ -82,15 +86,6 @@ class Admin::UsersControllerTest < ActionController::TestCase
                  {user_id: @admin_user.id}
     assert_response :success
     assert_template :edit
-  end
-
-  test "should mark user as paid" do
-    put :paid, {id: @user},
-               {user_id: @admin_user.id}
-               
-    user = User.find(@user)
-    assert user.paid
-    assert_redirected_to admin_users_url
   end
 
   test "should destroy user" do

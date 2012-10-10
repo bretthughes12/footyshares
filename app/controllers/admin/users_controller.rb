@@ -3,11 +3,16 @@ class Admin::UsersController < InheritedResources::Base
   load_and_authorize_resource
   skip_load_resource :only => :create
 
+  respond_to :json, only: :update
+
   # PUT /users/1
   def update
 #    update! { admin_users_url }
     if @user.update_attributes(permitted_params.user)
-      redirect_to admin_users_url, notice: "User updated"
+      respond_to do |format|
+        format.html { redirect_to admin_users_url }
+        format.json { render nil }
+      end
     else
       render :edit
     end
@@ -21,16 +26,6 @@ class Admin::UsersController < InheritedResources::Base
       redirect_to admin_users_url, notice: "Created user"
     else
       render :new
-    end
-  end
-
-  # PUT /users/1/paid
-  def paid
-    @user.mark_as_paid
-    @user.save
-    
-    respond_to do |format|
-      format.html { redirect_to admin_users_url }
     end
   end
 

@@ -12,18 +12,13 @@ Footyshares::Application.routes.draw do
   resources :users, except: [:new, :create]
 
   namespace :admin do
-    resources :users do
-      member do
-        put :paid
-      end
-    end
-
     resources :rounds do
       collection do
         post :update_shares
       end
     end
 
+    resources :users
     resources :matches
     resources :teams
     resources :shares

@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
                                               only_integer: true }
 
   attr_accessor   :password
-  attr_protected  :admin, :id, :salt
   
   before_validation :check_password_provided
   before_validation :validate_shares_in_lots_of_50
@@ -60,10 +59,6 @@ class User < ActiveRecord::Base
   
   def amount_payable_in_dollars
     self.starting_shares * STARTING_SHARE_PRICE_IN_CENTS / 100
-  end
-  
-  def mark_as_paid
-    self.paid = true
   end
   
   def self.current_shareprice
