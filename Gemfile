@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -63,6 +63,8 @@ end
 group :development do
   gem 'annotate', '2.4.1.beta1'
   gem 'letter_opener'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
