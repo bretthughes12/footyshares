@@ -58,6 +58,7 @@ group :development, :test do
   gem 'therubyracer'
   gem 'taps', :require => false # has an sqlite dependency, which heroku hates
   gem 'sqlite3'
+  gem 'rake'
 end
 
 group :development do

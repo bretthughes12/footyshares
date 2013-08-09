@@ -185,6 +185,7 @@ DEPENDENCIES
   newrelic_rpm
   pg
   rails (= 3.2.13)
+  rake
   sass-rails (~> 3.2.3)
   sqlite3
   strong_parameters
