@@ -1,5 +1,7 @@
 == Footy Shares
 
+{<img src="https://travis-ci.org/bretthughes12/footyshares.png" />}[https://travis-ci.org/bretthughes12/footyshares]
+
 This project is a Rails application designed to manage user participation in a Football Tipping competition based on a 'share investing' model.
 
 Users sign up to the site and indicate how many starting shares they wish to purchase (note: this is not a financial application - management of the financial aspects is handled manually).
