@@ -38,7 +38,8 @@ class PermittedParams < Struct.new(:params, :u)
   end
 
   def round
-    params.require(:round).permit(*round_attributes)
+#    params.require(:round).permit(*round_attributes)
+    params.require(:round).permit!
   end
 
   def round_attributes
