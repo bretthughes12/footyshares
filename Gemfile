@@ -47,7 +47,7 @@ gem 'jquery-rails'
 gem 'formtastic'
 gem 'cancan'
 gem 'inherited_resources'
-gem 'exception_notification', :require => 'exception_notifier'
+gem 'exception_notification'
 gem 'strong_parameters'
 
 group :development, :test do
