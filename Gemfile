@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.1.2'
 
 gem 'rails', '3.2.19'
 
@@ -65,9 +65,9 @@ group :development do
   gem 'annotate', '2.4.1.beta1'
   gem 'letter_opener'
   gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'binding_of_caller', '~> 0.7.2'
 end
 
 group :test do
-  gem 'cover_me', '~> 1.2.0'  
+  gem 'simplecov', :require => false  
 end
