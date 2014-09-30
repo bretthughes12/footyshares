@@ -5,23 +5,12 @@ class Admin::SharesController < InheritedResources::Base
   
   # PUT /shares/1
   def update
-#    update! { admin_shares_url }
-    if @share.update_attributes(permitted_params.share)
-      redirect_to admin_shares_url, notice: "Shares updated"
-    else
-      render :edit
-    end
+    update! { admin_shares_url }
   end
 
   # POST /shares/1
   def create
-#    create! { admin_shares_url }
-    @share = Share.new(permitted_params.share)
-    if @share.save
-      redirect_to admin_shares_url, notice: "Created shares"
-    else
-      render :new
-    end
+    create! { admin_shares_url }
   end
 
 private
@@ -32,5 +21,17 @@ private
         team.shares
       end
     end.flatten
+  end
+
+  def share_params
+    params.require(:share).permit(*share_attributes)
+  end
+
+  def share_attributes
+    if current_user && current_user.admin?
+      [:team_id, :user_id, :shares]
+    else
+      []
+    end
   end
 end

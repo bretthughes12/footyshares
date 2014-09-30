@@ -5,23 +5,12 @@ class Admin::RoundsController < InheritedResources::Base
 
   # PUT /rounds/1
   def update
-#    update! { admin_rounds_url }
-    if @round.update_attributes(permitted_params.round)
-      redirect_to admin_rounds_url, notice: "Round updated"
-    else
-      render :edit
-    end
+    update! { admin_rounds_url }
   end
 
   # POST /rounds/1
   def create
-#    create! { admin_rounds_url }
-    @round = Round.new(permitted_params.round)
-    if @round.save
-      redirect_to admin_rounds_url, notice: "Created round"
-    else
-      render :new
-    end
+    create! { admin_rounds_url }
   end
 
   # POST /rounds/update_shares
@@ -46,6 +35,20 @@ class Admin::RoundsController < InheritedResources::Base
         flash[:notice] = "Updated. The new shareprice is #{shareprice} cents"
         redirect_to admin_teams_path
       end
+    end
+  end
+
+private
+
+  def round_params
+    params.require(:round).permit(*round_attributes)
+  end
+
+  def round_attributes
+    if current_user && current_user.admin?
+      [:name, :cutoff_at, :starts_at, :prev_round_id]
+    else
+      []
     end
   end
 end

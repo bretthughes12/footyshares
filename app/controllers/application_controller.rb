@@ -10,11 +10,6 @@ class ApplicationController < ActionController::Base
     Ability.new(current_user)
   end
 
-  def permitted_params
-    @permitted_params ||= PermittedParams.new(params, current_user)
-  end
-  helper_method :permitted_params
-
   rescue_from CanCan::AccessDenied, ActiveModel::ForbiddenAttributes do |exception|
     case
       when @current_user.nil?

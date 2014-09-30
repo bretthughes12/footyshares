@@ -5,22 +5,25 @@ class Admin::MatchesController < InheritedResources::Base
 
   # PUT /matches/1
   def update
-#    update! { admin_matches_url }
-    if @match.update_attributes(permitted_params.match)
-      redirect_to admin_matches_url, notice: "Match updated"
-    else
-      render :edit
-    end
+    update! { admin_matches_url }
   end
 
   # POST /matches/1
   def create
-#    create! { admin_matches_url }
-    @match = Match.new(permitted_params.match)
-    if @match.save
-      redirect_to admin_matches_url, notice: "Created match"
+    create! { admin_matches_url }
+  end
+
+private
+
+  def match_params
+    params.require(:match).permit(*match_attributes)
+  end
+
+  def match_attributes
+    if current_user && current_user.admin?
+      [:name, :venue, :allow_only_one_team, :round_id]
     else
-      render :new
+      []
     end
   end
 end

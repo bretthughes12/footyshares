@@ -7,28 +7,28 @@ class Admin::TeamsController < InheritedResources::Base
   
   # PUT /users/1
   def update
-#    update! do |format|
-#      format.html { redirect_to admin_teams_url }
-#      format.json { render nil }
-#    end
-    if @team.update_attributes(permitted_params.team)
-      respond_to do |format|
-        format.html { redirect_to admin_teams_url }
-        format.json { render nil }
-      end
-    else
-      render :edit
+    update! do |format|
+      format.html { redirect_to admin_teams_url }
+      format.json { render nil }
     end
   end
 
   # POST /users/1
   def create
-#    create! { admin_teams_url }
-    @team = Team.new(permitted_params.team)
-    if @team.save
-      redirect_to admin_teams_url, notice: "Created team"
+    create! { admin_teams_url }
+  end
+
+private
+
+  def team_params
+    params.require(:team).permit(*team_attributes)
+  end
+
+  def team_attributes
+    if current_user && current_user.admin?
+      [:match_id, :name, :winner]
     else
-      render :new
+      []
     end
   end
 end
