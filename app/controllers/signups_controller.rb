@@ -13,7 +13,7 @@ class SignupsController < ApplicationController
       respond_to do |format|
         if @user.save
           flash[:notice] = 'Thank you for your time. Check your inbox for a confirmation email. You are now logged in'
-          UserMailer.welcome(@user).deliver       
+          UserMailer.welcome(@user).deliver_now       
           format.html do
             session[:user_id] = @user.id
             redirect_to root_url

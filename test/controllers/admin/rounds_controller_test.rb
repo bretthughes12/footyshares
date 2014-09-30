@@ -87,10 +87,8 @@ class Admin::RoundsControllerTest < ActionController::TestCase
     post :update_shares, {},
                          {user_id: @admin_user.id}
 
-    user = User.find(@admin_user)
-    assert_equal 0, user.shares_remaining
-    
-    round = Round.find(@round)
+    user = User.find(@admin_user.id)
+    round = Round.find(@round.id)
     assert_equal 0, round.shares_remaining
 
     assert_redirected_to admin_teams_path
