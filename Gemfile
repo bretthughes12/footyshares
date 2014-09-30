@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails', '3.2.19'
+gem 'rails', '~> 4.2.0.beta2' # PENDING: [Rails 4.2] Remove wakka.
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -15,14 +15,10 @@ end
 gem 'json'
 gem 'thin'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier', '>= 1.0.3'
-end
-
+# Assets
+gem 'sass-rails', '~> 5.0.0.beta1' # PENDING: [Rails 4.2] Remove wakka.
+gem 'coffee-rails', '~> 4.0.0' # PENDING: [Rails 4.2] Remove wakka.
+gem 'uglifier'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -42,9 +38,9 @@ gem 'jquery-rails'
 
 gem 'formtastic'
 gem 'cancan'
-gem 'inherited_resources'
+gem 'inherited_resources', github: 'andriytyurnikov/inherited_resources', branch: 'rails_4_2'
+gem 'responders'
 gem 'exception_notification'
-gem 'strong_parameters'
 
 group :development, :test do
   gem 'mysql2'

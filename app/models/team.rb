@@ -2,12 +2,12 @@ class Team < ActiveRecord::Base
   belongs_to :match
   has_many :shares
   
-  scope :winners, where(winner: true)
+  scope :winners, -> { where(winner: true) }
   
   validates :name,            length: { maximum: 255 }
 
   def total_shares
-    shares.sum(&:shares)
+    shares.sum(:shares)
   end
   
   def share_percentage

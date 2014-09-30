@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     Ability.new(current_user)
   end
 
-  rescue_from CanCan::AccessDenied, ActiveModel::ForbiddenAttributes do |exception|
+  rescue_from CanCan::AccessDenied do |exception|
     case
       when @current_user.nil?
         flash[:notice] = "You must log in to do that"

@@ -2,7 +2,7 @@ class Share < ActiveRecord::Base
   belongs_to :user
   belongs_to :team
 
-  default_scope where('shares > 0')
+  default_scope -> { where('shares > 0') }
 
   validates :shares, presence: true, 
                      numericality: { only_integer: true }
@@ -36,7 +36,7 @@ class Share < ActiveRecord::Base
     
     shares = []
     shares = teams.collect do |t|
-      Share.find_or_create_by_user_id_and_team_id(user.id, t.id) do |s|
+      Share.find_or_create_by(user_id: user.id, team_id: t.id) do |s|
         s.user_id = user.id
         s.team_id = t.id
       end

@@ -1,11 +1,11 @@
-Footyshares::Application.routes.draw do
+Rails.application.routes.draw do
 
-  match '/login' => "sessions#new", as: :login
-  match '/logout' => "sessions#destroy", as: :logout
-  match '/signup' => 'signups#new', as: :signup
-  match '/admin' => "static#admin", as: :admin
-  match '/shares/invest' => "shares#invest", as: :invest_shares
-  match '/shares/update_multiple' => "shares#update_multiple", as: :update_multiple_shares
+  get '/login' => "sessions#new", as: :login
+  get '/logout' => "sessions#destroy", as: :logout
+  get '/signup' => 'signups#new', as: :signup
+  get '/admin' => "static#admin", as: :admin
+  get '/shares/invest' => "shares#invest", as: :invest_shares
+  get '/shares/update_multiple' => "shares#update_multiple", as: :update_multiple_shares
 
   resource :sessions, only: [:new, :create, :destroy]
   resource :signups, only: :create
