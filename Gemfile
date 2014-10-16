@@ -37,7 +37,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug'
 
 gem 'formtastic'
-gem 'cancan'
+gem 'cancancan'
 gem 'inherited_resources', github: 'andriytyurnikov/inherited_resources', branch: 'rails_4_2'
 gem 'responders'
 gem 'exception_notification'
