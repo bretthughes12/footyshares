@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.2.0'
 
-gem 'rails', '~> 4.2.0.beta2' # PENDING: [Rails 4.2] Remove wakka.
+gem 'rails', '~> 4.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -16,8 +16,8 @@ gem 'json'
 gem 'thin'
 
 # Assets
-gem 'sass-rails', '~> 5.0.0.beta1' # PENDING: [Rails 4.2] Remove wakka.
-gem 'coffee-rails', '~> 4.0.0' # PENDING: [Rails 4.2] Remove wakka.
+gem 'sass-rails'
+gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 
