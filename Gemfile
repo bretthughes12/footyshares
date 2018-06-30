@@ -8,7 +8,7 @@ gem 'rails', '~> 4.2.10'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.19'
   gem 'newrelic_rpm'
 end
 
