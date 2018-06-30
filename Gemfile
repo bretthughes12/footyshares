@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.3.7'
 
 gem 'rails', '~> 4.2.0'
 
@@ -43,7 +43,7 @@ gem 'responders'
 gem 'exception_notification'
 
 group :development, :test do
-  gem 'mysql2'
+#  gem 'mysql2'
   gem 'test-unit'
   gem 'foreman'
   gem 'factory_girl_rails'

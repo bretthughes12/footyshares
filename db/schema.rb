@@ -13,11 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20121010100523) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "matches", force: :cascade do |t|
     t.string   "name",                limit: 255
     t.string   "venue",               limit: 255
-    t.integer  "round_id",            limit: 4
-    t.boolean  "allow_only_one_team", limit: 1,   default: false, null: false
+    t.integer  "round_id"
+    t.boolean  "allow_only_one_team",             default: false, null: false
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
@@ -31,27 +34,27 @@ ActiveRecord::Schema.define(version: 20121010100523) do
     t.datetime "starts_at"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.integer  "shares_remaining", limit: 4,   default: 0
-    t.integer  "prev_round_id",    limit: 4
+    t.integer  "shares_remaining",             default: 0
+    t.integer  "prev_round_id"
   end
 
   add_index "rounds", ["name"], name: "index_rounds_on_name", using: :btree
   add_index "rounds", ["starts_at"], name: "index_rounds_on_starts_at", using: :btree
 
   create_table "shares", force: :cascade do |t|
-    t.integer  "team_id",    limit: 4
-    t.integer  "user_id",    limit: 4
-    t.integer  "shares",     limit: 4, default: 0
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.integer  "shares",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "shares", ["user_id", "team_id"], name: "index_shares_on_user_id_and_team_id", using: :btree
 
   create_table "teams", force: :cascade do |t|
-    t.integer  "match_id",   limit: 4
+    t.integer  "match_id"
     t.string   "name",       limit: 255,                 null: false
-    t.boolean  "winner",     limit: 1,   default: false
+    t.boolean  "winner",                 default: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end
@@ -66,12 +69,12 @@ ActiveRecord::Schema.define(version: 20121010100523) do
     t.string   "salt",             limit: 255
     t.string   "email",            limit: 255
     t.string   "nickname",         limit: 255
-    t.boolean  "admin",            limit: 1,   default: false
-    t.integer  "shares_remaining", limit: 4,   default: 0
+    t.boolean  "admin",                        default: false
+    t.integer  "shares_remaining",             default: 0
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
-    t.integer  "starting_shares",  limit: 4,   default: 0
-    t.boolean  "paid",             limit: 1,   default: false
+    t.integer  "starting_shares",              default: 0
+    t.boolean  "paid",                         default: false
   end
 
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree

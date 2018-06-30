@@ -108,7 +108,6 @@ GEM
     mime-types (1.25.1)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
-    mysql2 (0.4.4)
     newrelic_rpm (3.16.2.321)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -211,7 +210,6 @@ DEPENDENCIES
   jquery-rails
   json
   letter_opener
-  mysql2
   newrelic_rpm
   pg
   rails (~> 4.2.0)
@@ -227,7 +225,7 @@ DEPENDENCIES
   uglifier
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.3.7p456
 
 BUNDLED WITH
-   1.13.5
+   1.16.2
