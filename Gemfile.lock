@@ -225,7 +225,7 @@ DEPENDENCIES
   letter_opener
   newrelic_rpm
   pg (~> 0.19)
-  rails (~> 4.2.10)
+  rails (= 4.2.10)
   rake
   responders
   sass-rails
