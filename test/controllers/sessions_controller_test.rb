@@ -3,7 +3,7 @@ require 'test_helper'
 class SessionsControllerTest < ActionController::TestCase
 
   def setup
-    @user = FactoryGirl.create(:user)
+    @user = FactoryBot.create(:user)
   end
 
   def test_should_get_login

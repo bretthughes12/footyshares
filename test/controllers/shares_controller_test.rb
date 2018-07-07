@@ -2,8 +2,8 @@ require 'test_helper'
 
 class SharesControllerTest < ActionController::TestCase
   setup do
-    @share = FactoryGirl.create(:share)
-    @admin_user = FactoryGirl.create(:user, :admin)
+    @share = FactoryBot.create(:share)
+    @admin_user = FactoryBot.create(:user, :admin)
   end
 
   test "should get shares for investing" do
@@ -12,12 +12,12 @@ class SharesControllerTest < ActionController::TestCase
   end
 
   test "should update multiple shares for the current round" do
-    user = FactoryGirl.create(:user, starting_shares: 100)
+    user = FactoryBot.create(:user, starting_shares: 100)
     match = @share.team.match
     team = @share.team
-    other_team = FactoryGirl.create(:team, match: match)
-    share = FactoryGirl.create(:share, team: team, user: user, shares: 50)
-    other_share = FactoryGirl.create(:share, team: other_team, user: user, shares: 50)
+    other_team = FactoryBot.create(:team, match: match)
+    share = FactoryBot.create(:share, team: team, user: user, shares: 50)
+    other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 50)
     
     put :update_multiple, {shares: {@share.id => { shares: share.shares, 
                                                    team_id: share.team_id, 
@@ -32,12 +32,12 @@ class SharesControllerTest < ActionController::TestCase
   end
 
   test "should not update shares when not equal remaining shares" do
-    user = FactoryGirl.create(:user, starting_shares: 200)
+    user = FactoryBot.create(:user, starting_shares: 200)
     match = @share.team.match
     team = @share.team
-    other_team = FactoryGirl.create(:team, match: match)
-    share = FactoryGirl.create(:share, team: team, user: user, shares: 50)
-    other_share = FactoryGirl.create(:share, team: other_team, user: user, shares: 50)
+    other_team = FactoryBot.create(:team, match: match)
+    share = FactoryBot.create(:share, team: team, user: user, shares: 50)
+    other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 50)
     
     put :update_multiple, {shares: {@share.id => { shares: share.shares, 
                                                    team_id: share.team_id, 
@@ -53,12 +53,12 @@ class SharesControllerTest < ActionController::TestCase
   end
 
   test "should not update shares when shares invalid" do
-    user = FactoryGirl.create(:user, starting_shares: 100)
+    user = FactoryBot.create(:user, starting_shares: 100)
     match = @share.team.match
     team = @share.team
-    other_team = FactoryGirl.create(:team, match: match)
-    share = FactoryGirl.create(:share, team: team, user: user, shares: 0)
-    other_share = FactoryGirl.create(:share, team: other_team, user: user, shares: 100)
+    other_team = FactoryBot.create(:team, match: match)
+    share = FactoryBot.create(:share, team: team, user: user, shares: 0)
+    other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 100)
     
     put :update_multiple, {shares: {@share.id => { shares: "a", 
                                                    team_id: share.team_id, 
@@ -74,13 +74,13 @@ class SharesControllerTest < ActionController::TestCase
 
   test "should not update shares when round is closed" do
     Round.delete_all
-    user = FactoryGirl.create(:user, starting_shares: 100)
-    round = FactoryGirl.create(:round, cutoff_at: 5.minutes.ago)
-    match = FactoryGirl.create(:match, round: round)
-    team = FactoryGirl.create(:team, match: match)
-    other_team = FactoryGirl.create(:team, match: match)
-    share = FactoryGirl.create(:share, team: team, user: user, shares: 0)
-    other_share = FactoryGirl.create(:share, team: other_team, user: user, shares: 100)
+    user = FactoryBot.create(:user, starting_shares: 100)
+    round = FactoryBot.create(:round, cutoff_at: 5.minutes.ago)
+    match = FactoryBot.create(:match, round: round)
+    team = FactoryBot.create(:team, match: match)
+    other_team = FactoryBot.create(:team, match: match)
+    share = FactoryBot.create(:share, team: team, user: user, shares: 0)
+    other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 100)
     
     put :update_multiple, {shares: {@share.id => { shares: share.shares, 
                                                    team_id: share.team_id, 
@@ -96,12 +96,12 @@ class SharesControllerTest < ActionController::TestCase
   end
 
   test "should not update multiple shares if match requires one team" do
-    user = FactoryGirl.create(:user, starting_shares: 100)
-    match = FactoryGirl.create(:match, allow_only_one_team: true)
-    team = FactoryGirl.create(:team, match: match)
-    other_team = FactoryGirl.create(:team, match: match)
-    share = FactoryGirl.create(:share, team: team, user: user, shares: 50)
-    other_share = FactoryGirl.create(:share, team: other_team, user: user, shares: 50)
+    user = FactoryBot.create(:user, starting_shares: 100)
+    match = FactoryBot.create(:match, allow_only_one_team: true)
+    team = FactoryBot.create(:team, match: match)
+    other_team = FactoryBot.create(:team, match: match)
+    share = FactoryBot.create(:share, team: team, user: user, shares: 50)
+    other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 50)
     
     put :update_multiple, {shares: {@share.id => { shares: share.shares, 
                                                    team_id: share.team_id, 

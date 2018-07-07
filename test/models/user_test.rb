@@ -2,13 +2,13 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test "current shareprice should reflect the total shares and remaining shares" do
-    user = FactoryGirl.create(:user, starting_shares: 50)
+    user = FactoryBot.create(:user, starting_shares: 50)
 
     assert_equal 10, User.current_shareprice
   end
 
   test "current shareprice should be zero when there are no shares remaining" do
-    user = FactoryGirl.create(:user, starting_shares: 50)
+    user = FactoryBot.create(:user, starting_shares: 50)
     user.shares_remaining = 0
     user.save
 
@@ -16,14 +16,14 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "update shares remaining should update users shares" do
-    match = FactoryGirl.create(:match)
-    team1 = FactoryGirl.create(:team, match: match)
-    team2 = FactoryGirl.create(:team, match: match, winner: true)
-    user = FactoryGirl.create(:user)
+    match = FactoryBot.create(:match)
+    team1 = FactoryBot.create(:team, match: match)
+    team2 = FactoryBot.create(:team, match: match, winner: true)
+    user = FactoryBot.create(:user)
     user.shares_remaining = 0
     user.save
-    share1 = FactoryGirl.create(:share, team: team1, user: user, shares: 12)
-    share2 = FactoryGirl.create(:share, team: team2, user: user, shares: 34)
+    share1 = FactoryBot.create(:share, team: team1, user: user, shares: 12)
+    share2 = FactoryBot.create(:share, team: team2, user: user, shares: 34)
 
     User.update_shares_remaining
 

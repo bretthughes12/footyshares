@@ -2,8 +2,8 @@ require 'test_helper'
 
 class SignupsControllerTest < ActionController::TestCase
   setup do
-    @user = FactoryGirl.create(:user)
-    @round = FactoryGirl.create(:round)
+    @user = FactoryBot.create(:user)
+    @round = FactoryBot.create(:round)
   end
 
   test "should get new" do
@@ -42,7 +42,7 @@ class SignupsControllerTest < ActionController::TestCase
 
   test "should not allow signup if competition has already started" do
     Round.delete_all
-    @round = FactoryGirl.create(:round, cutoff_at: 5.minutes.ago)
+    @round = FactoryBot.create(:round, cutoff_at: 5.minutes.ago)
  
     assert_no_difference('User.count') do
       post :create, signup: { email: @user.email, 

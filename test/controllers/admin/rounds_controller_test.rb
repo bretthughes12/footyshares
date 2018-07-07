@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Admin::RoundsControllerTest < ActionController::TestCase
   setup do
-    @round = FactoryGirl.create(:round)
-    @admin_user = FactoryGirl.create(:user, :admin)
+    @round = FactoryBot.create(:round)
+    @admin_user = FactoryBot.create(:user, :admin)
   end
 
   test "should get index" do
@@ -82,7 +82,7 @@ class Admin::RoundsControllerTest < ActionController::TestCase
 
   test "should update users and round when shares updated" do
     Round.delete_all
-    @round = FactoryGirl.create(:round, shares_remaining: 100)
+    @round = FactoryBot.create(:round, shares_remaining: 100)
 
     post :update_shares, {},
                          {user_id: @admin_user.id}

@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Admin::TeamsControllerTest < ActionController::TestCase
   setup do
-    @team = FactoryGirl.create(:team)
-    @admin_user = FactoryGirl.create(:user, :admin)
+    @team = FactoryBot.create(:team)
+    @admin_user = FactoryBot.create(:user, :admin)
   end
 
   test "should get index" do

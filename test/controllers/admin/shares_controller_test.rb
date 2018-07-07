@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Admin::SharesControllerTest < ActionController::TestCase
   setup do
-    @share = FactoryGirl.create(:share)
-    @admin_user = FactoryGirl.create(:user, :admin)
+    @share = FactoryBot.create(:share)
+    @admin_user = FactoryBot.create(:user, :admin)
   end
 
   test "should get index" do
