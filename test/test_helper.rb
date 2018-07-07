@@ -12,7 +12,7 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   # fixtures :all
 
-  self.use_transactional_fixtures = true
+  self.use_transactional_tests = true
   # self.use_instantiated_fixtures  = false
 
   # Add more helper methods to be used by all tests here...

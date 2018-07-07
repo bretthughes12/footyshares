@@ -10,7 +10,10 @@ class SharesController < ApplicationController
 
   # PUT shares/update_multiple
   def update_multiple
-    shares_invested = params[:shares].sum { |key, share| share[:shares].to_i }
+    shares_invested = 0  
+    params[:shares].each do |key, share| 
+      shares_invested += share[:shares].to_i
+    end
     @round = Round.current
 
     case
