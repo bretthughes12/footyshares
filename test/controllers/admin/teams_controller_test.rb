@@ -7,22 +7,22 @@ class Admin::TeamsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index, {}, {user_id: @admin_user.id}
+    get :index, session: {user_id: @admin_user.id}
     assert_response :success
     assert_not_nil assigns(:teams)
   end
 
   test "should get new" do
-    get :new, {}, {user_id: @admin_user.id}
+    get :new, session: {user_id: @admin_user.id}
     assert_response :success
   end
 
   test "should create team" do
     assert_difference('Team.count') do
-      post :create, {team: { match_id: @team.match_id, 
-                             name: @team.name, 
-                             winner: @team.winner }},
-                    {user_id: @admin_user.id}
+      post :create, params: {team: { match_id: @team.match_id, 
+                                     name: @team.name, 
+                                     winner: @team.winner }},
+                    session: {user_id: @admin_user.id}
     end
 
     assert_redirected_to admin_teams_path
@@ -30,10 +30,10 @@ class Admin::TeamsControllerTest < ActionController::TestCase
 
   test "should not create team when invalid" do
     assert_no_difference('Team.count') do
-      post :create, {team: { match_id: @team.match_id, 
-                             name: "A"*300, 
-                             winner: @team.winner }},
-                    {user_id: @admin_user.id}
+      post :create, params: {team: { match_id: @team.match_id, 
+                                     name: "A"*300, 
+                                     winner: @team.winner }},
+                    session: {user_id: @admin_user.id}
     end
 
     assert_response :success
@@ -41,23 +41,23 @@ class Admin::TeamsControllerTest < ActionController::TestCase
   end
 
   test "should show team" do
-    get :show, {id: @team}, 
-               {user_id: @admin_user.id}
+    get :show, params: {id: @team}, 
+               session: {user_id: @admin_user.id}
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, {id: @team},
-               {user_id: @admin_user.id}
+    get :edit, params: {id: @team},
+               session: {user_id: @admin_user.id}
     assert_response :success
   end
 
   test "should update team" do
-    put :update, {id: @team, 
-                  team: { match_id: @team.match_id, 
-                          name: @team.name, 
-                          winner: @team.winner }},
-                 {user_id: @admin_user.id}
+    put :update, params: {id: @team, 
+                          team: { match_id: @team.match_id, 
+                                  name: @team.name, 
+                                  winner: @team.winner }},
+                 session: {user_id: @admin_user.id}
     assert_redirected_to admin_teams_path
   end
 
@@ -73,8 +73,8 @@ class Admin::TeamsControllerTest < ActionController::TestCase
 
   test "should destroy team" do
     assert_difference('Team.count', -1) do
-      delete :destroy, {id: @team},
-                       {user_id: @admin_user.id}
+      delete :destroy, params: {id: @team},
+                       session: {user_id: @admin_user.id}
     end
 
     assert_redirected_to admin_teams_path

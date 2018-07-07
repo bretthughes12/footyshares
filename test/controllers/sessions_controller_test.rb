@@ -7,20 +7,20 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   def test_should_get_login
-    get :new, {}, {}
+    get :new
     assert_response :success
     assert_template 'new'
   end
 
   def test_should_login_non_admin_user
-    post :create, { login: @user.login, password: @user.password }
+    post :create, params: { login: @user.login, password: @user.password }
     assert_not_nil session[:user_id]
     assert_equal @user.id, session[:user_id]
     assert_redirected_to root_path
   end
 
   def test_should_not_login_with_bad_password
-    post :create, { login: @user.login, password: "notsosecret" }
+    post :create, params: { login: @user.login, password: "notsosecret" }
 #    assert_select "div#main" do
 #      assert_select "div.notification", "Invalid user/password combination"
 #    end
@@ -30,8 +30,7 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   def test_should_logout
-    delete :destroy, {}, 
-                 { user_id: @user.id}
+    delete :destroy, session: { user_id: @user.id}
                    
     assert_nil session[:user_id]
     assert_redirected_to root_url
@@ -39,7 +38,7 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   def test_should_logout_even_when_not_logged_on
-    delete :destroy, {}, {}
+    delete :destroy
                    
     assert_nil session[:user_id]
     assert_redirected_to root_url

@@ -13,23 +13,23 @@ class Admin::UsersControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new, {}, {user_id: @admin_user.id}
+    get :new, session: {user_id: @admin_user.id}
     assert_response :success
   end
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, {user: { email: @user.email, 
-                             name: "Fred", 
-                             nickname: "fred", 
-                             shares_remaining: @user.shares_remaining, 
-                             login: "fred",
-                             password: "secret",
-                             password_confirmation: "secret",
-                             starting_shares: 100,
-                             admin: false,
-                             paid: false }}, 
-                    {user_id: @admin_user.id}
+      post :create, params: {user: { email: @user.email, 
+                                     name: "Fred", 
+                                     nickname: "fred", 
+                                     shares_remaining: @user.shares_remaining, 
+                                     login: "fred",
+                                     password: "secret",
+                                     password_confirmation: "secret",
+                                     starting_shares: 100,
+                                     admin: false,
+                                     paid: false }}, 
+                    session: {user_id: @admin_user.id}
     end
 
     assert_redirected_to admin_users_url
@@ -37,15 +37,15 @@ class Admin::UsersControllerTest < ActionController::TestCase
 
   test "should not create user when invalid" do
     assert_no_difference('User.count') do
-      post :create, {user: { email: "bademail", 
-                             name: "Fred", 
-                             nickname: "fred", 
-                             shares_remaining: @user.shares_remaining, 
-                             login: "fred",
-                             password: "secret",
-                             password_confirmation: "secret",
-                             starting_shares: 100 }}, 
-                    {user_id: @admin_user.id}
+      post :create, params: {user: { email: "bademail", 
+                                     name: "Fred", 
+                                     nickname: "fred", 
+                                     shares_remaining: @user.shares_remaining, 
+                                     login: "fred",
+                                     password: "secret",
+                                     password_confirmation: "secret",
+                                     starting_shares: 100 }}, 
+                    session: {user_id: @admin_user.id}
     end
 
     assert_response :success
@@ -53,45 +53,45 @@ class Admin::UsersControllerTest < ActionController::TestCase
   end
 
   test "should show user" do
-    get :show, id: @user
+    get :show, params: {id: @user}
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, {id: @user},
-               {user_id: @admin_user.id}
+    get :edit, params: {id: @user},
+               session: {user_id: @admin_user.id}
     assert_response :success
   end
 
   test "should update user" do
-    put :update, {id: @user, 
-                  user: { email: @user.email, 
-                          name: @user.name, 
-                          nickname: @user.nickname, 
-                          shares_remaining: @user.shares_remaining, 
-                          login: @user.login,
-                          admin: false,
-                          paid: false }},
-                 {user_id: @admin_user.id}
+    put :update, params: {id: @user, 
+                          user: { email: @user.email, 
+                                  name: @user.name, 
+                                  nickname: @user.nickname, 
+                                  shares_remaining: @user.shares_remaining, 
+                                  login: @user.login,
+                                  admin: false,
+                                  paid: false }},
+                 session: {user_id: @admin_user.id}
     assert_redirected_to admin_users_url
   end
 
   test "should not update user when invalid" do
-    put :update, {id: @user, 
-                  user: { email: "bademail", 
-                          name: @user.name, 
-                          nickname: @user.nickname, 
-                          shares_remaining: @user.shares_remaining, 
-                          login: @user.login }},
-                 {user_id: @admin_user.id}
+    put :update, params: {id: @user, 
+                          user: { email: "bademail", 
+                                  name: @user.name, 
+                                  nickname: @user.nickname, 
+                                  shares_remaining: @user.shares_remaining, 
+                                  login: @user.login }},
+                 session: {user_id: @admin_user.id}
     assert_response :success
     assert_template :edit
   end
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
-      delete :destroy, {id: @user},
-                       {user_id: @admin_user.id}
+      delete :destroy, params: {id: @user},
+                       session: {user_id: @admin_user.id}
     end
 
     assert_redirected_to admin_users_url

@@ -13,13 +13,13 @@ class SignupsControllerTest < ActionController::TestCase
 
   test "should allow signup" do
     assert_difference('User.count') do
-      post :create, signup: { email: @user.email, 
-                              name: "Bruce", 
-                              nickname: "bruce", 
-                              starting_shares: @user.starting_shares, 
-                              login: "bruce",
-                              password: "secret",
-                              password_confirmation: "secret" }
+      post :create, params: {signup: { email: @user.email, 
+                                      name: "Bruce", 
+                                      nickname: "bruce", 
+                                      starting_shares: @user.starting_shares, 
+                                      login: "bruce",
+                                      password: "secret",
+                                      password_confirmation: "secret" }}
     end
 
     assert_redirected_to root_path
@@ -27,13 +27,13 @@ class SignupsControllerTest < ActionController::TestCase
 
   test "should not allow signup if user invalid" do
     assert_no_difference('User.count') do
-      post :create, signup: { email: "invalid", 
-                              name: "Bruce", 
-                              nickname: "bruce", 
-                              starting_shares: @user.starting_shares, 
-                              login: "bruce",
-                              password: "secret",
-                              password_confirmation: "secret" }
+      post :create, params: {signup: { email: "invalid", 
+                                       name: "Bruce", 
+                                       nickname: "bruce", 
+                                       starting_shares: @user.starting_shares, 
+                                       login: "bruce",
+                                       password: "secret",
+                                       password_confirmation: "secret" }}
     end
 
     assert_response :success
@@ -45,13 +45,13 @@ class SignupsControllerTest < ActionController::TestCase
     @round = FactoryBot.create(:round, cutoff_at: 5.minutes.ago)
  
     assert_no_difference('User.count') do
-      post :create, signup: { email: @user.email, 
-                              name: "Bruce", 
-                              nickname: "bruce", 
-                              starting_shares: @user.starting_shares, 
-                              login: "bruce",
-                              password: "secret",
-                              password_confirmation: "secret" }
+      post :create, params: {signup: { email: @user.email, 
+                                       name: "Bruce", 
+                                       nickname: "bruce", 
+                                       starting_shares: @user.starting_shares, 
+                                       login: "bruce",
+                                       password: "secret",
+                                       password_confirmation: "secret" }}
     end
 
     assert_response :success

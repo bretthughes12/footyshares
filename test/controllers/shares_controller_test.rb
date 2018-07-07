@@ -7,7 +7,7 @@ class SharesControllerTest < ActionController::TestCase
   end
 
   test "should get shares for investing" do
-    get :invest, {}, {user_id: @admin_user.id}
+    get :invest, session: {user_id: @admin_user.id}
     assert_response :success
   end
 
@@ -19,13 +19,13 @@ class SharesControllerTest < ActionController::TestCase
     share = FactoryBot.create(:share, team: team, user: user, shares: 50)
     other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 50)
     
-    put :update_multiple, {shares: {@share.id => { shares: share.shares, 
-                                                   team_id: share.team_id, 
-                                                   user_id: share.user_id },
-                                    other_share.id => { shares: other_share.shares, 
-                                                        team_id: other_share.team_id, 
-                                                        user_id: other_share.user_id }}}, 
-                          {user_id: user.id}
+    put :update_multiple, params: {shares: {@share.id => { shares: share.shares, 
+                                                           team_id: share.team_id, 
+                                                           user_id: share.user_id },
+                                            other_share.id => { shares: other_share.shares, 
+                                                                team_id: other_share.team_id, 
+                                                                user_id: other_share.user_id }}}, 
+                          session: {user_id: user.id}
 
     assert_equal "Shares updated", flash[:notice]
     assert_redirected_to invest_shares_path
@@ -39,13 +39,13 @@ class SharesControllerTest < ActionController::TestCase
     share = FactoryBot.create(:share, team: team, user: user, shares: 50)
     other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 50)
     
-    put :update_multiple, {shares: {@share.id => { shares: share.shares, 
-                                                   team_id: share.team_id, 
-                                                   user_id: share.user_id },
-                                    other_share.id => { shares: other_share.shares, 
-                                                        team_id: other_share.team_id, 
-                                                        user_id: other_share.user_id }}}, 
-                          {user_id: user.id}
+    put :update_multiple, params: {shares: {@share.id => { shares: share.shares, 
+                                                           team_id: share.team_id, 
+                                                           user_id: share.user_id },
+                                            other_share.id => { shares: other_share.shares, 
+                                                                team_id: other_share.team_id, 
+                                                                user_id: other_share.user_id }}}, 
+                          session: {user_id: user.id}
 
     assert_match "should equal your remaining shares", flash[:notice]
     assert_response :success
@@ -60,13 +60,13 @@ class SharesControllerTest < ActionController::TestCase
     share = FactoryBot.create(:share, team: team, user: user, shares: 0)
     other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 100)
     
-    put :update_multiple, {shares: {@share.id => { shares: "a", 
-                                                   team_id: share.team_id, 
-                                                   user_id: share.user_id },
-                                    other_share.id => { shares: other_share.shares, 
-                                                        team_id: other_share.team_id, 
-                                                        user_id: other_share.user_id }}}, 
-                          {user_id: user.id}
+    put :update_multiple, params: {shares: {@share.id => { shares: "a", 
+                                                           team_id: share.team_id, 
+                                                           user_id: share.user_id },
+                                            other_share.id => { shares: other_share.shares, 
+                                                                team_id: other_share.team_id, 
+                                                                user_id: other_share.user_id }}}, 
+                          session: {user_id: user.id}
 
     assert_match "problem updating", flash[:notice]
     assert_redirected_to invest_shares_path
@@ -82,13 +82,13 @@ class SharesControllerTest < ActionController::TestCase
     share = FactoryBot.create(:share, team: team, user: user, shares: 0)
     other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 100)
     
-    put :update_multiple, {shares: {@share.id => { shares: share.shares, 
-                                                   team_id: share.team_id, 
-                                                   user_id: share.user_id },
-                                    other_share.id => { shares: other_share.shares, 
-                                                        team_id: other_share.team_id, 
-                                                        user_id: other_share.user_id }}}, 
-                          {user_id: user.id}
+    put :update_multiple, params: {shares: {@share.id => { shares: share.shares, 
+                                                           team_id: share.team_id, 
+                                                           user_id: share.user_id },
+                                            other_share.id => { shares: other_share.shares, 
+                                                                team_id: other_share.team_id, 
+                                                                user_id: other_share.user_id }}}, 
+                          session: {user_id: user.id}
 
     assert_match "round is now closed", flash[:notice]
     assert_response :success
@@ -103,13 +103,13 @@ class SharesControllerTest < ActionController::TestCase
     share = FactoryBot.create(:share, team: team, user: user, shares: 50)
     other_share = FactoryBot.create(:share, team: other_team, user: user, shares: 50)
     
-    put :update_multiple, {shares: {@share.id => { shares: share.shares, 
-                                                   team_id: share.team_id, 
-                                                   user_id: share.user_id },
-                                    other_share.id => { shares: other_share.shares, 
-                                                        team_id: other_share.team_id, 
-                                                        user_id: other_share.user_id }}}, 
-                          {user_id: user.id}
+    put :update_multiple, params: {shares: {@share.id => { shares: share.shares, 
+                                                           team_id: share.team_id, 
+                                                           user_id: share.user_id },
+                                            other_share.id => { shares: other_share.shares, 
+                                                                team_id: other_share.team_id, 
+                                                                user_id: other_share.user_id }}}, 
+                          session: {user_id: user.id}
 
     assert_match "must invest your shares against only one team", flash[:notice]
     assert_response :success
