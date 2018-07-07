@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.7'
 
-gem 'rails', '4.2.10'
+gem 'rails', '5.0.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -38,7 +38,7 @@ gem 'jquery-rails'
 
 gem 'formtastic'
 gem 'cancancan'
-gem 'inherited_resources', github: 'andriytyurnikov/inherited_resources', branch: 'rails_4_2'
+gem 'inherited_resources'
 gem 'responders'
 gem 'exception_notification'
 
@@ -62,4 +62,5 @@ end
 
 group :test do
   gem 'simplecov', :require => false  
+  gem 'rails-controller-testing'
 end

@@ -1,4 +1,4 @@
-class Share < ActiveRecord::Base
+class Share < ApplicationRecord
   belongs_to :user
   belongs_to :team
 

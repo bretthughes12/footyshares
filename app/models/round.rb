@@ -1,4 +1,4 @@
-class Round < ActiveRecord::Base
+class Round < ApplicationRecord
   has_many :matches
   has_one :previous, class_name: 'Round', foreign_key: 'prev_round_id'
   
