@@ -23,13 +23,14 @@ gem 'cancancan'
 gem 'inherited_resources'
 gem 'responders'
 gem 'exception_notification'
+# gem 'rest-client', '~> 1.7.3'
 
 group :development, :test do
   gem 'test-unit'
   gem 'foreman'
   gem 'factory_bot_rails'
   gem 'therubyracer'
-  gem 'taps', :require => false # has an sqlite dependency, which heroku hates
+#  gem 'taps', :require => false # has an sqlite dependency, which heroku hates
   gem 'sqlite3'
   gem 'rake'
 end
