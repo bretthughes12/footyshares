@@ -5,7 +5,7 @@ ruby '2.5.1'
 gem 'rails', '5.2.0'
 
 group :production do
-  gem 'pg', '~> 0.19'
+  gem 'pg'
   gem 'newrelic_rpm'
 end
 
@@ -23,14 +23,12 @@ gem 'cancancan'
 gem 'inherited_resources'
 gem 'responders'
 gem 'exception_notification'
-# gem 'rest-client', '~> 1.7.3'
 
 group :development, :test do
   gem 'test-unit'
   gem 'foreman'
   gem 'factory_bot_rails'
   gem 'therubyracer'
-#  gem 'taps', :require => false # has an sqlite dependency, which heroku hates
   gem 'sqlite3'
   gem 'rake'
 end
