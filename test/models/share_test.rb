@@ -79,15 +79,15 @@ class ShareTest < ActiveSupport::TestCase
     assert_equal false, Share.store(user.id, team.id, "a")
   end
 end
+
 # == Schema Information
 #
 # Table name: shares
 #
-#  id         :integer(4)      not null, primary key
-#  team_id    :integer(4)
-#  user_id    :integer(4)
-#  shares     :integer(4)      default(0)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  id         :integer          not null, primary key
+#  team_id    :integer
+#  user_id    :integer
+#  shares     :integer          default(0)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
-

@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id               :integer          not null, primary key
+#  login            :string(255)
+#  name             :string(255)
+#  hashed_password  :string(255)
+#  salt             :string(255)
+#  email            :string(255)
+#  nickname         :string(255)
+#  admin            :boolean          default(FALSE)
+#  shares_remaining :integer          default(0)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  starting_shares  :integer          default(0)
+#  paid             :boolean          default(FALSE)
+#
+
 # Read about factories at https://github.com/thoughtbot/factory_bot
 
 FactoryBot.define do

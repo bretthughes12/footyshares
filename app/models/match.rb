@@ -5,16 +5,16 @@ class Match < ApplicationRecord
   validates :name,            length: { maximum: 255 }
   validates :venue,           length: { maximum: 255 }
 end
+
 # == Schema Information
 #
 # Table name: matches
 #
-#  id                  :integer(4)      not null, primary key
+#  id                  :integer          not null, primary key
 #  name                :string(255)
 #  venue               :string(255)
-#  round_id            :integer(4)
-#  allow_only_one_team :boolean(1)      default(FALSE), not null
-#  created_at          :datetime        not null
-#  updated_at          :datetime        not null
+#  round_id            :integer
+#  allow_only_one_team :boolean          default(FALSE), not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #
-

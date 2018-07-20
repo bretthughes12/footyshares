@@ -31,6 +31,7 @@ group :development, :test do
   gem 'therubyracer'
   gem 'sqlite3'
   gem 'rake'
+  gem 'listen'
 end
 
 group :development do
