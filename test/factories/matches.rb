@@ -15,9 +15,9 @@
 
 FactoryBot.define do
   factory :match do
-    name "MyString"
-    venue "MyString"
+    name {"MyString"}
+    venue {"MyString"}
     round
-    allow_only_one_team false
+    allow_only_one_team {false}
   end
 end

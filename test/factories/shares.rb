@@ -16,6 +16,6 @@ FactoryBot.define do
   factory :share do
     team
     user
-    shares 50
+    shares {50}
   end
 end
