@@ -1,0 +1,1 @@
+(function(){jQuery(function(){return $(".updateable-checkbox").click(function(){var e,t;return t=$(this).data("spinner-id"),e=this.name+"="+this.checked,$.ajax({url:$(this).data("href"),type:"PUT",dataType:"json",data:e,beforeSend:function(){return $(t).show()},complete:function(){return $(t).hide()}})})})}).call(this);
