@@ -17,7 +17,7 @@
 FactoryBot.define do
   factory :round do
     name {"MyString"}
-    cutoff_at {"2020-08-17"}
+    cutoff_at {"2025-08-17"}
     starts_at {"2014-08-17"}
     prev_round_id {nil}
   end
