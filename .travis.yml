@@ -5,3 +5,4 @@ services:
   - postgresql
 before_script:
   - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database footyshares_test;' -U postgres
