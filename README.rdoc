@@ -1,6 +1,6 @@
 == Footy Shares
 
-{<img src="https://travis-ci.org/bretthughes12/footyshares.png" />}[https://travis-ci.org/bretthughes12/footyshares]
+![TravisCI badge](https://travis-ci.org/bretthughes12/footyshares.png "Travis CI badge")
 
 This project is a Rails application designed to manage user participation in a Football Tipping competition based on a 'share investing' model.
 
