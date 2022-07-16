@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.6.6'
+ruby '2.7.5'
 
 gem 'rails', '5.2.6.3'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '1.4.0'
   gem 'newrelic_rpm'
 end
 
