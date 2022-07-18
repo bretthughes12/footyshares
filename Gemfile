@@ -5,7 +5,7 @@ ruby '2.7.5'
 gem 'rails', '5.2.8.1'
 
 group :production do
-  gem 'pg', '1.4.0'
+  gem 'pg'
   gem 'newrelic_rpm'
 end
 
